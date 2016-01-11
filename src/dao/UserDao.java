@@ -13,23 +13,22 @@ import bean.Admin;
 import bean.NormalUser;
 
 public class UserDao {
-	
+
 	public final static int TYPEUSER_ADMIN = 0;
 	public final static int TYPEUSER_NORMALUSER = 1;
 	public final static int ACCOUNTSTATUS_ACTIVE = 1;
 	public final static int ACCOUNTSTATUS_INACTIVE = 0;
-	
-	
+
 	public static int insert(NormalUser u) {
 		int res = 0;
-				
-		Connection cnx=null;
+
+		Connection cnx = null;
 		try {
 			cnx = ConnexionBDD.getInstance().getCnx();
-			
-			//Requete
-			String sql = "INSERT INTO person(email,password,familyname,firstname,adress,phone,creationdate,typeuser,availablefunds,accountstatus,lastconnexiondate) " +
-					"VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+
+			// Requete
+			String sql = "INSERT INTO person(email,password,familyname,firstname,adress,phone,creationdate,typeuser,availablefunds,accountstatus,lastconnexiondate) "
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = cnx.prepareStatement(sql);
 			ps.setString(1, u.getEmail());
 			ps.setString(2, u.getPassword());
@@ -44,29 +43,28 @@ public class UserDao {
 			Date newDate = new Date();
 			java.sql.Date d = new java.sql.Date(newDate.getTime());
 			ps.setDate(11, d);
-			
-			
-			//Execution et traitement de la reponse
+
+			// Execution et traitement de la reponse
 			res = ps.executeUpdate();
-			
-			ConnexionBDD.getInstance().closeCnx();			
+
+			ConnexionBDD.getInstance().closeCnx();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return res;
 	}
-	
+
 	public static int insert(Admin u) {
 		int res = 0;
-				
-		Connection cnx=null;
+
+		Connection cnx = null;
 		try {
 			cnx = ConnexionBDD.getInstance().getCnx();
-			
-			//Requete
-			String sql = "INSERT INTO person(email,password,familyname,firstname,adress,phone,creationdate,typeuser) " +
-					"VALUES(?,?,?,?,?,?,?,?)";
+
+			// Requete
+			String sql = "INSERT INTO person(email,password,familyname,firstname,adress,phone,creationdate,typeuser) "
+					+ "VALUES(?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = cnx.prepareStatement(sql);
 			ps.setString(1, u.getEmail());
 			ps.setString(2, u.getPassword());
@@ -76,29 +74,28 @@ public class UserDao {
 			ps.setString(6, u.getTelephone());
 			ps.setDate(7, (java.sql.Date) u.getCreationDate());
 			ps.setInt(8, TYPEUSER_ADMIN);
-			
-			
-			//Execution et traitement de la reponse
+
+			// Execution et traitement de la reponse
 			res = ps.executeUpdate();
-			
-			ConnexionBDD.getInstance().closeCnx();			
+
+			ConnexionBDD.getInstance().closeCnx();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return res;
 	}
-	
+
 	public static int update(NormalUser u) {
 		int res = 0;
-				
-		Connection cnx=null;
+
+		Connection cnx = null;
 		try {
 			cnx = ConnexionBDD.getInstance().getCnx();
-			
-			//Requete
-			String sql = "UPDATE person SET email=?,password=?,familyname=?,firstname=?,adress=?,phone=?,creationdate=?,typeuser=?,availablefunds=?,accountstatus=?,lastconnexiondate=? " +
-					"WHERE id=?";
+
+			// Requete
+			String sql = "UPDATE person SET email=?,password=?,familyname=?,firstname=?,adress=?,phone=?,creationdate=?,typeuser=?,availablefunds=?,accountstatus=?,lastconnexiondate=? "
+					+ "WHERE id=?";
 			PreparedStatement ps = cnx.prepareStatement(sql);
 			ps.setString(1, u.getEmail());
 			ps.setString(2, u.getPassword());
@@ -112,16 +109,55 @@ public class UserDao {
 			ps.setBoolean(10, true);
 			ps.setDate(11, (java.sql.Date) new Date());
 			ps.setInt(12, u.getId());
-			
-			
-			//Execution et traitement de la reponse
+
+			// Execution et traitement de la reponse
 			res = ps.executeUpdate();
-			
-			ConnexionBDD.getInstance().closeCnx();			
+
+			ConnexionBDD.getInstance().closeCnx();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return res;
+	}
+
+	public static List<NormalUser> findAll() {
+
+		List<NormalUser> lu = new ArrayList<NormalUser>();
+		Connection cnx = null;
+		try {
+			cnx = ConnexionBDD.getInstance().getCnx();
+			// ou Class.forName(com.mysql.jdbc.Driver.class.getName());
+
+			// Requete
+			String sql = "SELECT id,email,password,familyname,firstname,adress,phone,creationdate,typeuser FROM person";
+			PreparedStatement ps = cnx.prepareStatement(sql);
+
+			// Execution et traitement de la réponse
+			ResultSet res = ps.executeQuery();
+
+			while (res.next()) {
+				NormalUser nu = new NormalUser();
+				nu.setId(res.getInt("id"));
+				nu.setEmail(res.getString("email"));
+				nu.setPassword(res.getString("password"));
+				nu.setFamilyName(res.getString("familyName"));
+				nu.setFirstName(res.getString("firstName"));
+				nu.setAddress(res.getString("adress"));
+				nu.setTelephone(res.getString("phone"));
+//				java.util.Date creationDate = new Date(res.getDate("creationDate").getTime());
+//				nu.setCreationDate(creationDate);
+				lu.add(nu);
+			}
+
+			res.close();
+			ConnexionBDD.getInstance().closeCnx();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		//
+
+		return lu;
 	}
 }
