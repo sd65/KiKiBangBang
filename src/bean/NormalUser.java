@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class NormalUser extends User {
-	private Boolean accountStatus;
+	private int accountStatus;
 	private BigDecimal funds;
 	private Date lastConnexionDate;
 
@@ -78,11 +78,11 @@ public class NormalUser extends User {
 		idea.addContribution(c);
 	}
 
-	public Boolean getAccountStatus() {
+	public int getAccountStatus() {
 		return accountStatus;
 	}
 
-	public void setAccountStatus(Boolean accountStatus) {
+	public void setAccountStatus(int accountStatus) {
 		this.accountStatus = accountStatus;
 	}
 

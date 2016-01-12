@@ -8,6 +8,7 @@ public abstract class Participation implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -1285382824572751771L;
+	private int id;
 	private NormalUser user;
 	private Date date;
 	public NormalUser getUser() {
@@ -21,5 +22,11 @@ public abstract class Participation implements Serializable{
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }
