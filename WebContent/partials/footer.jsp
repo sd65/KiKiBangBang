@@ -43,7 +43,7 @@
         <script src="assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
         <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
 
-
+	    <script src="assets/plugins/jquery-datatables-editable/jquery.dataTables.js"></script> 
 
         <script src="assets/plugins/morris/morris.min.js"></script>
         <script src="assets/plugins/raphael/raphael-min.js"></script>
@@ -54,6 +54,16 @@
 
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
+        
+        
+         <script src="assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+	    <script src="assets/plugins/jquery-datatables-editable/jquery.dataTables.js"></script> 
+	    <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
+
+	    <script src="assets/plugins/tiny-editable/numeric-input-example.js"></script>
+	    
+	    
+	    <script src="assets/pages/datatables.editable.init.js"></script>
 
         <script type="text/javascript">
             jQuery(document).ready(function($) {

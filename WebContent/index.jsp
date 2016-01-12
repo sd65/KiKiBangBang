@@ -17,6 +17,7 @@
         <input type="password" class="form-control">
     </div>
 </div>
+<button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
 </form>
 						
         
