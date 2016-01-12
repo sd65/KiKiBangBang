@@ -13,14 +13,35 @@ public abstract class Idea implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 6074952096682311133L;
-	private Long id;
+	private int id;
 	private String name;
 	private Date creationDate;
 	private BigDecimal fundsRequired;
+	private Date stepDate;
 	private String shortDescription;
 	private String redactionEnrich;
 	//private Map<String, List<Participation>> participations = new HashMap<String, List<Participation>>();
 	private List<Question> discussionQuestions = new ArrayList<Question>();
+	public void setDiscussionQuestions(List<Question> discussionQuestions) {
+		this.discussionQuestions = discussionQuestions;
+	}
+
+	public void setDiscussionVotes(List<DiscussionVote> discussionVotes) {
+		this.discussionVotes = discussionVotes;
+	}
+
+	public void setRedactionComments(List<Comment> redactionComments) {
+		this.redactionComments = redactionComments;
+	}
+
+	public void setEvaluationVotes(List<EvaluationVote> evaluationVotes) {
+		this.evaluationVotes = evaluationVotes;
+	}
+
+	public void setFundingContributions(List<Contribution> fundingContributions) {
+		this.fundingContributions = fundingContributions;
+	}
+
 	private List<DiscussionVote> discussionVotes = new ArrayList<DiscussionVote>();
 	private List<Comment> redactionComments = new ArrayList<Comment>();
 	private List<EvaluationVote> evaluationVotes = new ArrayList<EvaluationVote>();
@@ -65,11 +86,11 @@ public abstract class Idea implements Serializable {
 	
 	public abstract void nextStep();
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -119,5 +140,13 @@ public abstract class Idea implements Serializable {
 
 	public void setProposer(NormalUser proposer) {
 		this.proposer = proposer;
+	}
+
+	public Date getStepDate() {
+		return stepDate;
+	}
+
+	public void setStepDate(Date stepDate) {
+		this.stepDate = stepDate;
 	}
 }

@@ -33,7 +33,15 @@ public class AllUserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<NormalUser> lnu = UserDao.findAll();
 		request.setAttribute("userList", lnu);
-        
+        NormalUser unUser = UserDao.findUser(5);
+        request.setAttribute("usr", unUser);
+        // UPDATE OK
+//        unUser.setEmail("monboule@zero");
+//        UserDao.update(unUser);
+        NormalUser deuxUser = UserDao.findUser(5);
+        request.setAttribute("usr2", deuxUser);
+        NormalUser troisUser = UserDao.findUserByEmail("alex.m@lol.com");
+        request.setAttribute("usr3", troisUser);
         request.getRequestDispatcher("/allUserView.jsp").forward(request, response);
 	}
 
