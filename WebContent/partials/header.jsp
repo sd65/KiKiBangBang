@@ -108,6 +108,18 @@
 
                             <% if (userType=="admin")  { %>
                             
+                            	
+                            <li class="has_sub"title>
+                                <a href="admin/dashboard.jsp" class="waves-effect <% if (pageTitle.startsWith("Dashboard")) out.print("active");%>"><i class="ti-home"></i> <span> Dashboard </span> </a>  
+                            </li>
+                            
+                            <li class="has_sub"title>
+                                <a href="admin/users.jsp" class="waves-effect <% if (pageTitle.startsWith("Users")) out.print("active");%>"><i class="ti-user"></i> <span> Users </span> </a>  
+                            </li>
+                            
+                             <li class="has_sub"title>
+                                <a href="admin/ideas.jsp" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> Ideas </span> </a>  
+                            </li>
                             
                             <% } else { %>
                             

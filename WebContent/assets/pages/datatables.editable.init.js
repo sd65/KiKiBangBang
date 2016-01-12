@@ -43,15 +43,7 @@
 
 		build: function() {
 			this.datatable = this.$table.DataTable({
-				aoColumns: [
-					null,
-					null,
-					null,
-					null,
-					null,
-					null,
-					{ "bSortable": true }
-				]
+				aoColumns: null
 			});
 
 			window.dt = this.datatable;
