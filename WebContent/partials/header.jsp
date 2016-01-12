@@ -32,7 +32,10 @@
         <![endif]-->
 		<base href="<%= baseUrl %>/">
         <script src="assets/js/modernizr.min.js"></script>
-
+		
+		<!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
 
     </head>
 
@@ -103,9 +106,25 @@
 
                         	
 
+                            <% if (userType=="admin")  { %>
+                            
+                            
+                            <% } else { %>
+                            
                             <li class="has_sub"title>
-                                <a href="#" class="waves-effect active"><i class="ti-home"></i> <span> Dashboard </span> </a>  
+                                <a href="user/submitIdea.jsp" class="waves-effect <% if (pageTitle.startsWith("Submit")) out.print("active");%>"><i class="ti-pencil-alt"></i> <span> Submit an idea </span> </a>  
                             </li>
+                            
+                            <li class="has_sub"title>
+                                <a href="user/myIdeas.jsp" class="waves-effect <% if (pageTitle.startsWith("My")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> My ideas <span class="label label-success pull-right">3</span></span> </a>  
+                            </li>
+                            
+                            <li class="has_sub"title>
+                                <a href="user/newIdeas.jsp" class="waves-effect <% if (pageTitle.startsWith("New")) out.print("active");%>"><i class="ti-bar-chart"></i> <span> New ideas </span> <span class="label label-pink pull-right">11</span></a>  
+                            </li>
+                            
+                            
+                            <% } %>
 
                             
 
