@@ -1,12 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>KikiBangBang</title>
-</head>
-<body>
-	That's just a test.
-</body>
-</html>
+<% String pageTitle="Login page"; %>
+<%@include file="partials/header.jsp"%>
+ 
+
+
+<form class="form-horizontal" role="form"> 	
+ <div class="form-group">
+    <label class="col-md-2 control-label" for="example-email">Email</label>
+    <div class="col-md-10">
+        <input type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-2 control-label">Password</label>
+    <div class="col-md-10">
+        <input type="password" class="form-control">
+    </div>
+</div>
+</form>
+						
+        
+<jsp:include page="partials/footer.jsp"/>
