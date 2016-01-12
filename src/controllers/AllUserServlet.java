@@ -38,7 +38,7 @@ public class AllUserServlet extends HttpServlet {
         // UPDATE OK
 //        unUser.setEmail("monboule@zero");
 //        UserDao.update(unUser);
-        NormalUser deuxUser = UserDao.findUser(5);
+        NormalUser deuxUser = UserDao.findUser(1);
         request.setAttribute("usr2", deuxUser);
         NormalUser troisUser = UserDao.findUserByEmail("alex.m@lol.com");
         request.setAttribute("usr3", troisUser);
