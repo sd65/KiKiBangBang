@@ -3,6 +3,13 @@ package bean;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import dao.CommentDao;
+import dao.ContributionDao;
+import dao.DiscussionVoteDao;
+import dao.EvaluationVoteDao;
+import dao.IdeaDao;
+import dao.QuestionDao;
+
 public class NormalUser extends User {
 	private int accountStatus;
 	private BigDecimal funds;
@@ -15,8 +22,7 @@ public class NormalUser extends User {
 		di.setFundsRequired(fundsRequired);
 		di.setShortDescription(shortDescription);
 		di.setProposer(this);
-		// Qu'en faire ?
-		// Créer l'idée dans la DB
+		IdeaDao.insert(di);
 	}
 
 	public void doComment(RedactionIdea idea, String text) {
@@ -25,6 +31,7 @@ public class NormalUser extends User {
 		c.setUser(this);
 		c.setDate(new Date());
 		idea.addComment(c);
+		CommentDao.insert(c, idea.getId());
 	}
 
 	public void askQuestion(DiscussionIdea idea, String text) {
@@ -33,6 +40,7 @@ public class NormalUser extends User {
 		q.setQuestion(text);
 		q.setUser(this);
 		idea.addQuestion(q);
+		QuestionDao.insert(q, idea.getId());
 	}
 
 	public void thumbUp(DiscussionIdea idea) {
@@ -41,6 +49,7 @@ public class NormalUser extends User {
 		v.setUser(this);
 		v.setUpDown(1);
 		idea.addVote(v);
+		DiscussionVoteDao.insert(v, idea.getId());
 	}
 
 	public void thumbDown(DiscussionIdea idea) {
@@ -49,6 +58,7 @@ public class NormalUser extends User {
 		v.setUser(this);
 		v.setUpDown(-1);
 		idea.addVote(v);
+		DiscussionVoteDao.insert(v, idea.getId());
 	}
 
 	public void voteEvaluationUp(EvaluationIdea idea, String criterion) {
@@ -58,6 +68,7 @@ public class NormalUser extends User {
 		v.setCriterion(criterion);
 		v.setUpDown(1);
 		idea.addEvaluationVote(v);
+		EvaluationVoteDao.insert(v, idea.getId());
 	}
 
 	public void voteEvaluationDown(EvaluationIdea idea, String criterion) {
@@ -67,6 +78,7 @@ public class NormalUser extends User {
 		v.setCriterion(criterion);
 		v.setUpDown(-1);
 		idea.addEvaluationVote(v);
+		EvaluationVoteDao.insert(v, idea.getId());
 	}
 
 	public void contribute(FundingIdea idea, BigDecimal amount) {
@@ -76,6 +88,7 @@ public class NormalUser extends User {
 		c.setAmount(amount);
 		setFunds(getFunds().subtract(amount));
 		idea.addContribution(c);
+		ContributionDao.insert(c, idea.getId());
 	}
 
 	public int getAccountStatus() {
