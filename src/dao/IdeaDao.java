@@ -116,7 +116,9 @@ public class IdeaDao {
 		
 		idea.setProposer(UserDao.findUser(idProposer));
 		idea.setDiscussionQuestions(QuestionDao.findAllForIdea(id));
+		idea.setDiscussionVotes(DiscussionVoteDao.findAllForIdea(id));
 		idea.setRedactionComments(CommentDao.findAllForIdea(id));
+		idea.setEvaluationVotes(EvaluationVoteDao.findAllForIdea(id));		
 		idea.setFundingContributions(ContributionDao.findAllForIdea(id));
 		// TODO To be continued...
 		
