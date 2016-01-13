@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("You are doing it wrong."));
+		response.getWriter().append("You are doing it wrong.");
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			else {
 				//TODO Authentification admin r�ussie ->/admin
 				out.print("redirect Admin accueil");
-				response.sendRedirect("admin");
+				response.sendRedirect("admin/");
 			}
 		}
 		else if (!nu.getPassword().equals(pwd)){
@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
 		else {
 			// TODO Authentification r�ussie
 			out.println("redirect NormalUser accueil");
-			response.sendRedirect("users");
+			response.sendRedirect("user/");
 		}
 	}
 
