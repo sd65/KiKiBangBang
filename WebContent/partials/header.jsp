@@ -104,8 +104,7 @@
                     <div id="sidebar-menu">
                         <ul>
                         
-                        	<% if (pageTitle!="Login page")  { %>
-
+                        	
                         	
 
                             <% if (userType=="admin")  { %>
@@ -123,7 +122,7 @@
                                 <a href="admin/ideas.jsp" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> Ideas </span> </a>  
                             </li>
                             
-                            <% } else { %>
+                            <% } else if (userType=="user") { %>
                             
                             <li class="has_sub"title>
                                 <a href="user/submitIdea.jsp" class="waves-effect <% if (pageTitle.startsWith("Submit")) out.print("active");%>"><i class="ti-pencil-alt"></i> <span> Submit an idea </span> </a>  
@@ -138,7 +137,7 @@
                             </li>
                             
                             
-                            <% } } %>
+                            <% } %>
 
                             
 

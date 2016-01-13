@@ -16,7 +16,6 @@ import dao.UserDao;
 @WebServlet("/InscriptionServlet")
 public class InscriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public static final String VUE = "/inscriptionForm.jsp";
     public static final String CHAMP_EMAIL = "email";
     public static final String CHAMP_PASS = "motdepasse";
     public static final String CHAMP_CONF = "confirmation";
@@ -38,14 +37,14 @@ public class InscriptionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/* Affichage de la page d'inscription */
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        //this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* Récupération des champs du formulaire. */
+		/* Rï¿½cupï¿½ration des champs du formulaire. */
         String email = request.getParameter( CHAMP_EMAIL );
         String motDePasse = request.getParameter( CHAMP_PASS );
         String confirmation = request.getParameter( CHAMP_CONF );
@@ -67,7 +66,12 @@ public class InscriptionServlet extends HttpServlet {
         request.setAttribute("result", i);
         request.setAttribute("email", email);
         
-        request.getRequestDispatcher("/inscriptionView.jsp").forward(request, response);
+        if(i == 1) {
+        	response.sendRedirect("index.jsp?justSignIn=true");
+        }
+        else {
+        	response.sendRedirect("signIn.jsp?error=true");
+        }
 	}
 
 }

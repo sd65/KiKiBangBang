@@ -19,6 +19,7 @@
 </div>
 <button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
 </form>
-						
+		
+<a href="signIn.jsp">SignIn !</a>				
         
 <jsp:include page="partials/footer.jsp"/>

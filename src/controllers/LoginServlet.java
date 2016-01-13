@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("You are doing it wrong."));
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 		out.println("POSTED : ");
 		out.println(email);
 		out.println(pwd);
-		out.println("DAO Reccupéré");
+		out.println("DAO Reccupï¿½rï¿½");
 		out.println(nu.getEmail());
 		out.println(nu.getPassword());
 		if (nu.getEmail()==null){
@@ -65,8 +65,9 @@ public class LoginServlet extends HttpServlet {
 				out.println("Erreur - wrong admin password");
 			}
 			else {
-				//TODO Authentification admin réussie ->/admin
+				//TODO Authentification admin rï¿½ussie ->/admin
 				out.print("redirect Admin accueil");
+				response.sendRedirect("admin");
 			}
 		}
 		else if (!nu.getPassword().equals(pwd)){
@@ -74,8 +75,9 @@ public class LoginServlet extends HttpServlet {
 			out.println("Erreur - wrong password");
 		}
 		else {
-			// TODO Authentification réussie
+			// TODO Authentification rï¿½ussie
 			out.println("redirect NormalUser accueil");
+			response.sendRedirect("users");
 		}
 	}
 
