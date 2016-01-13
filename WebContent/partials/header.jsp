@@ -1,4 +1,4 @@
-<% String baseUrl="http://localhost:8080/KikiBangBang/"; %>
+<% String baseUrl="http://localhost:8080/KikiBangBang"; %>
 <!DOCTYPE html>
 <html>
     <head>
