@@ -2,97 +2,78 @@
 <%@include file="../partials/header.jsp"%>
 
 
-			<form id="basic-form" action="#">
+			<form id="basic-form" action="#" method="post">
 				<div>
-					<h3>Account</h3>
+					<h3>Basic info</h3>
 					<section>
 						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="userName">User
-								name *</label>
+							<label class="col-lg-2 control-label " for="userName">Title</label>
 							<div class="col-lg-10">
 								<input class="form-control required" id="userName"
-									name="userName" type="text">
+									name="title" type="text">
 							</div>
 						</div>
 						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="password">
-								Password *</label>
+							<label class="col-lg-2 control-label " for="password">Description
+								</label>
 							<div class="col-lg-10">
-								<input id="password" name="password" type="text"
+								<input id="password" name="description" type="text"
 									class="required form-control">
 
-							</div>
-						</div>
-
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="confirm">Confirm
-								Password *</label>
-							<div class="col-lg-10">
-								<input id="confirm" name="confirm" type="text"
-									class="required form-control">
 							</div>
 						</div>
 
 					</section>
-					<h3>Profile</h3>
+					<h3>Aims</h3>
 					<section>
 						<div class="form-group clearfix">
 
-							<label class="col-lg-2 control-label" for="name"> First
-								name *</label>
+							<label class="col-lg-2 control-label" for="name"> Application field</label>
 							<div class="col-lg-10">
-								<input id="name" name="name" type="text"
+								<input id="name" name="applicationField" type="text"
 									class="required form-control">
 							</div>
 						</div>
 						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="surname">
-								Last name *</label>
+							<label class="col-lg-2 control-label " for="surname">Targeted market</label>
 							<div class="col-lg-10">
-								<input id="surname" name="surname" type="text"
+								<input id="surname" name="targetedMarket" type="text"
 									class="required form-control">
 
 							</div>
 						</div>
 
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="email">Email
-								*</label>
-							<div class="col-lg-10">
-								<input id="email" name="email" type="text"
-									class="required email form-control">
-							</div>
-						</div>
-
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="address">Address
-								*</label>
-							<div class="col-lg-10">
-								<input id="address" name="address" type="text"
-									class="form-control">
-							</div>
-						</div>
-
-						<div class="form-group clearfix">
-							<label class="col-lg-12 control-label ">(*) Mandatory</label>
-						</div>
-
 					</section>
-					<h3>Hints</h3>
+					<h3>Money</h3>
 					<section>
-						<div class="form-group clearfix">
-							<div class="col-lg-12">
-								<ul class="list-unstyled w-list">
-									<li><b>First Name :</b> Jonathan</li>
-									<li><b>Last Name :</b> Smith</li>
-									<li><b>Emial:</b> jonathan@smith.com</li>
-									<li><b>Address:</b> 123 Your City, Cityname.</li>
-								</ul>
+					
+					<div class="form-group clearfix">
+							<label class="col-lg-2 control-label " for="surname">Funding requested</label>
+							<div class="col-lg-10">
+								<input id="surname" name="fundingRequested" type="text"
+									class="required form-control">
+
 							</div>
 						</div>
+						
 					</section>
-					<h3>Finish</h3>
+					<h3></h3>
 					<section>
+					<div class="form-group clearfix">
+							<label class="col-lg-2 control-label " for="surname">Terms and
+										Conditions</label>
+							<div class="col-lg-10">
+								<textarea  
+									class="required form-control">
+Et hanc quidem praeter oppida multa duae civitates exornant Seleucia opus Seleuci regis, et Claudiopolis quam deduxit coloniam Claudius Caesar. Isaura enim antehac nimium potens, olim subversa ut rebellatrix interneciva aegre vestigia claritudinis pristinae monstrat admodum pauca.
+
+Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret, Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.
+
+Nec minus feminae quoque calamitatum participes fuere similium. nam ex hoc quoque sexu peremptae sunt originis altae conplures, adulteriorum flagitiis obnoxiae vel stuprorum. inter quas notiores fuere Claritas et Flaviana, quarum altera cum duceretur ad mortem, indumento, quo vestita erat, abrepto, ne velemen quidem secreto membrorum sufficiens retinere permissa est. ideoque carnifex nefas admisisse convictus inmane, vivus exustus est.
+								</textarea>
+
+							</div>
+						</div>
 						<div class="form-group clearfix">
 							<div class="col-lg-12">
 								<div class="checkbox checkbox-primary">

@@ -13,7 +13,10 @@
         $form_container.children("div").steps({
             headerTag: "h3",
             bodyTag: "section",
-            transitionEffect: "slideLeft"
+            transitionEffect: "slideLeft",
+            onFinished: function (event, currentIndex) {
+            	document.getElementById("basic-form").submit();
+            }
         });
         return $form_container;
     },
