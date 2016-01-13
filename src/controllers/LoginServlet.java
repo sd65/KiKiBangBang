@@ -65,12 +65,12 @@ public class LoginServlet extends HttpServlet {
 				out.println("Erreur - wrong admin password");
 			}
 			else {
-				//TODO Authentification admin réussie
+				//TODO Authentification admin réussie ->/admin
 				out.print("redirect Admin accueil");
 			}
 		}
 		else if (!nu.getPassword().equals(pwd)){
-			//TODO Erreur - wrong password
+			//TODO Erreur - wrong password ->/user
 			out.println("Erreur - wrong password");
 		}
 		else {

@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import dao.IdeaDao;
+
 public abstract class Idea implements Serializable {
 	/**
 	 * 
@@ -20,8 +22,10 @@ public abstract class Idea implements Serializable {
 	private Date stepDate;
 	private String shortDescription;
 	private String redactionEnrich;
-	//private Map<String, List<Participation>> participations = new HashMap<String, List<Participation>>();
+	// private Map<String, List<Participation>> participations = new
+	// HashMap<String, List<Participation>>();
 	private List<Question> discussionQuestions = new ArrayList<Question>();
+
 	public void setDiscussionQuestions(List<Question> discussionQuestions) {
 		this.discussionQuestions = discussionQuestions;
 	}
@@ -47,44 +51,51 @@ public abstract class Idea implements Serializable {
 	private List<EvaluationVote> evaluationVotes = new ArrayList<EvaluationVote>();
 	private List<Contribution> fundingContributions = new ArrayList<Contribution>();
 	private NormalUser proposer;
-	
-//	public Map<String, List<Participation>> getParticipations() {
-//		return participations;
-//	}
 
-	public List<DiscussionVote> getDiscussionVotes() {
-		return discussionVotes;
-	}
-	
-	public Integer getDiscussionScore() {
+	public int getEvaluationScore() {
 		Integer score = 0;
-		for (DiscussionVote vote : getDiscussionVotes()){
+		for (EvaluationVote vote : getEvaluationVotes()) {
 			score += vote.getUpDown();
 		}
 		return score;
 	}
-	
+
+	public List<DiscussionVote> getDiscussionVotes() {
+		return discussionVotes;
+	}
+
+	public Integer getDiscussionScore() {
+		Integer score = 0;
+		for (DiscussionVote vote : getDiscussionVotes()) {
+			score += vote.getUpDown();
+		}
+		return score;
+	}
+
 	public List<Question> getDiscussionQuestions() {
 		return discussionQuestions;
 	}
-	
+
 	public List<Comment> getRedactionComments() {
 		return redactionComments;
 	}
-	
+
 	public List<EvaluationVote> getEvaluationVotes() {
 		return evaluationVotes;
 	}
-	
+
 	public List<Contribution> getFundingContributions() {
 		return fundingContributions;
 	}
-	
-//	public void setParticipations(Map<String, List<Participation>> pParticipations) {
-//		participations = pParticipations;
-//	}
-	
-	public abstract void nextStep();
+
+	// public void setParticipations(Map<String, List<Participation>>
+	// pParticipations) {
+	// participations = pParticipations;
+	// }
+
+	public void nextStep() {
+		IdeaDao.updateNextStep(this);
+	}
 
 	public int getId() {
 		return id;
@@ -148,5 +159,13 @@ public abstract class Idea implements Serializable {
 
 	public void setStepDate(Date stepDate) {
 		this.stepDate = stepDate;
+	}
+
+	public BigDecimal getRaisedFunds() {
+		BigDecimal sum = new BigDecimal(0);
+		for (Contribution c : getFundingContributions()) {
+			sum.add(c.getAmount());
+		}
+		return sum;
 	}
 }

@@ -95,4 +95,25 @@ public class EvaluationVoteDao {
 
 		return lev;
 	}
+	
+	public static int onDeleteIdea(int idIdea) {
+		int res = 0;
+		Connection cnx = null;
+		try {
+			cnx = ConnexionBDD.getInstance().getCnx();
+
+			// Requete
+			String sql = "DELETE FROM evaluationvote WHERE idea=?";
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			ps.setInt(1, idIdea);
+			// Execution et traitement de la reponse
+			res = ps.executeUpdate();
+
+			ConnexionBDD.getInstance().closeCnx();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return res;
+	}
 }

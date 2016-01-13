@@ -22,4 +22,13 @@ public class ApplicationConstants {
 	public final static int IDEA_STEP_EVALUATION = 4;
 	public final static int IDEA_STEP_FUNDING = 5;
 	public final static int IDEA_STEP_PRODUCTION = 6;
+	
+	// Nombre de points (somme des votes) nécessaire pour passer en phase de rédaction
+	public final static int IDEA_NEXTSTEP_DISCUSSION = 10;
+	// Temps (en jours) nécessaire pour passer en phase d'évaluation
+	public final static int IDEA_NEXTSTEP_REDACTION = 1;
+	// Nombre de points (somme des votes tous critères) nécessaire pour passer en phase de funding
+	public final static int IDEA_NEXTSTEP_EVALUATION = 20;
+	// Temps (en jours) nécessaire pour atteindre les fonds requis sous peine d'être supprimé
+	public final static int IDEA_NEXTSTEP_FUNDING = 2;
 }
