@@ -1,4 +1,4 @@
-<% String pageTitle="Login page"; %>
+<% String pageTitle="Login page",userType="admin"; %>
 <%@include file="partials/header.jsp"%>
  
 
