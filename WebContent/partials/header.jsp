@@ -103,6 +103,8 @@
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
+                        
+                        	<% if (pageTitle!="Login page")  { %>
 
                         	
 
@@ -132,11 +134,11 @@
                             </li>
                             
                             <li class="has_sub"title>
-                                <a href="user/newIdeas.jsp" class="waves-effect <% if (pageTitle.startsWith("New")) out.print("active");%>"><i class="ti-bar-chart"></i> <span> New ideas </span> <span class="label label-pink pull-right">11</span></a>  
+                                <a href="user/ideas.jsp" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-bar-chart"></i> <span> Ideas </span> <span class="label label-pink pull-right">11</span></a>  
                             </li>
                             
                             
-                            <% } %>
+                            <% } } %>
 
                             
 

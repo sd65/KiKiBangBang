@@ -1,4 +1,4 @@
-<% String pageTitle="New ideas", userType="user"; %>
+<% String pageTitle="Ideas", userType="user"; %>
 <%@include file="../partials/header.jsp"%>
  
 
