@@ -251,9 +251,10 @@ public class UserDao {
 			// ou Class.forName(com.mysql.jdbc.Driver.class.getName());
 
 			// Requete
-			String sql = "SELECT id,email,password,familyname,firstname,adress,phone,creationdate,typeuser,availablefunds,accountstatus,lastconnexiondate FROM person WHERE email=?";
+			String sql = "SELECT id,email,password,familyname,firstname,adress,phone,creationdate,typeuser,availablefunds,accountstatus,lastconnexiondate FROM person WHERE email=? AND typeuser=?";
 			PreparedStatement ps = cnx.prepareStatement(sql);
 			ps.setString(1, email);
+			ps.setInt(2, TYPEUSER_NORMALUSER);
 
 			// Execution et traitement de la réponse
 			ResultSet res = ps.executeQuery();
@@ -279,5 +280,45 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return nu;
+	}
+	
+	/**
+	 * Fin an admin by email
+	 * @param email
+	 * @return
+	 */
+	public static Admin findAdminByEmail(String email) {
+		Connection cnx = null;
+		Admin adm = new Admin();
+		try {
+			cnx = ConnexionBDD.getInstance().getCnx();
+			// ou Class.forName(com.mysql.jdbc.Driver.class.getName());
+
+			// Requete
+			String sql = "SELECT id,email,password,familyname,firstname,adress,phone,creationdate,typeuser FROM person WHERE email=? AND typeuser=?";
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setInt(2, TYPEUSER_ADMIN);
+
+			// Execution et traitement de la réponse
+			ResultSet res = ps.executeQuery();
+			while(res.next()){
+				adm.setId(res.getInt("id"));
+				adm.setEmail(res.getString("email"));
+				adm.setPassword(res.getString("password"));
+				adm.setFamilyName(res.getString("familyName"));
+				adm.setFirstName(res.getString("firstName"));
+				adm.setAddress(res.getString("adress"));
+				adm.setTelephone(res.getString("phone"));
+				Date creationDate = new Date(res.getDate("creationdate").getTime());
+				adm.setCreationDate(creationDate);
+				break;
+			}
+			res.close();
+			ConnexionBDD.getInstance().closeCnx();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return adm;
 	}
 }

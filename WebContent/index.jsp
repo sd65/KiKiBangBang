@@ -3,18 +3,18 @@
  
 
 
-<form class="form-horizontal" role="form"> 	
+<form class="form-horizontal" role="form" method="post" action="login"> 	
  <div class="form-group">
     <label class="col-md-2 control-label" for="example-email">Email</label>
     <div class="col-md-10">
-        <input type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
+        <input type="email" id="email" name="email" class="form-control" placeholder="Email">
     </div>
 </div>
 
 <div class="form-group">
     <label class="col-md-2 control-label">Password</label>
     <div class="col-md-10">
-        <input type="password" class="form-control">
+        <input type="password" id="pwd" name="pwd" class="form-control">
     </div>
 </div>
 <button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
