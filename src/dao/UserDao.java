@@ -221,7 +221,6 @@ public class UserDao {
 				nu.setAddress(res.getString("adress"));
 				nu.setTelephone(res.getString("phone"));
 				java.sql.Date creationDateSql = res.getDate("creationdate");
-				LOGGER.info(String.valueOf(creationDateSql.getTime()));
 				Date creationDate = new Date(res.getDate("creationdate").getTime());
 				nu.setCreationDate(creationDate);
 				nu.setFunds(res.getBigDecimal("availablefunds"));

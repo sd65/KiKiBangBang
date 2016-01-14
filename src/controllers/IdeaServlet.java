@@ -16,6 +16,7 @@ import bean.DiscussionIdea;
 import bean.Idea;
 import bean.NormalUser;
 import bean.Question;
+import bean.RedactionIdea;
 import dao.IdeaDao;
 
 /**
@@ -72,6 +73,15 @@ public class IdeaServlet extends HttpServlet {
 			else
 				usr.thumbDown(di);
 			
+		} else if (request.getParameter("redactionEnrich") != null)
+		{
+			RedactionIdea ri = (RedactionIdea) idea;
+			ri.setRedactionEnrich(request.getParameter("redactionEnrich"));
+			IdeaDao.update(ri);
+		}  else if (request.getParameter("newComment") != null)
+		{
+			RedactionIdea ri = (RedactionIdea) idea;
+			usr.doComment(ri, request.getParameter("newComment"));
 		}
 		
 		doGet(request, response);

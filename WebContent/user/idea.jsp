@@ -6,6 +6,7 @@
 <%@page import="bean.Idea"%>
 <%@page import="bean.Question"%>
 <%@page import="bean.NormalUser"%>
+<%@page import="bean.Comment"%>
 <%
 	Object obj = request.getAttribute("idea");
 	Idea idea = (Idea) obj;
@@ -28,15 +29,15 @@
 		aria-expanded="false"> <span class="visible-xs"><i
 				class="fa fa-user"></i></span> <span class="hidden-xs">Redaction</span>
 	</a></li>
-	<li class="tab <% if( idea.getStepName() == "Evaluation") out.print("active"); %>"><a href="#Evaluation" data-toggle="tab"
+	<li class="tab <% if( idea.getStepName() == "Evaluation") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Evaluation") out.print("active"); %>" href="#Evaluation" data-toggle="tab"
 		aria-expanded="false"> <span class="visible-xs"><i
 				class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Evaluation</span>
 	</a></li>
-	<li class="tab <% if( idea.getStepName() == "Funding") out.print("active"); %>"><a href="#Funding" data-toggle="tab"
+	<li class="tab <% if( idea.getStepName() == "Funding") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Funding") out.print("active"); %>" href="#Funding" data-toggle="tab"
 		aria-expanded="false"> <span class="visible-xs"><i
 				class="fa fa-cog"></i></span> <span class="hidden-xs">Funding</span>
 	</a></li>
-	<li class="tab <% if( idea.getStepName() == "Production") out.print("active"); %>"><a href="#Production" data-toggle="tab"
+	<li class="tab <% if( idea.getStepName() == "Production") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Production") out.print("active"); %>" href="#Production" data-toggle="tab"
 		aria-expanded="false"> <span class="visible-xs"><i
 				class="fa fa-cog"></i></span> <span class="hidden-xs">Production</span>
 	</a></li>
@@ -90,9 +91,13 @@
 					
 				
 
-
+				<% if (!idea.userAlreadyVote(nu)) { %>
 				<button style="float: right;" type="submit"
 					class="btn btn-purple waves-effect waves-light">Vote</button>
+				<% } else { %>
+					<button style="float: right;" type="submitNot"
+					class="btn btn-success waves-effect waves-light" onclick="return false">You have already voted !</button>
+				<% } %>
 			</form>
 
 		</div>
@@ -153,17 +158,73 @@
 		
 	</div>
 	<div class="tab-pane <% if( idea.getStepName() == "Redaction") out.print("active"); %>" id="Redaction">
-		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-			arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-			Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
-			dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-			tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
-			ac, enim.</p>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-			Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-			penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-			Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-			Nulla consequat massa quis enim.</p>
+		
+		<form class="form-horizontal" role="form" method="post">
+
+			<div class="form-group">
+				<label class="col-md-2 control-label">Enriched description</label>
+				<div class="col-md-10">
+					<textarea class="form-control" name="redactionEnrich" <% if (idea.getProposer().getId() != nu.getId()) { %> readonly=""  <% } %> type="text"> <%= idea.getRedactionEnrich() %></textarea>
+				</div>
+			</div>
+			
+			<% if (idea.getProposer().getId() == nu.getId()) { %>
+			<button style="float: right;" type="submit"
+					class="btn btn-purple waves-effect waves-light">Submit</button>
+			<% } %>
+		</form>
+		
+		<h2>Comments</h2>
+		
+		<div class="row">
+
+			<form class="form-horizontal" role="form" method="post">
+
+				<div class="form-group">
+					<label class="col-md-2 control-label">Your comment:</label>
+					<div class="col-md-10">
+						<textarea type="text" id="" name="newComment"
+							class="form-control input-lg"></textarea>
+					</div>
+				</div>
+				<button style="float: right;" type="submit"
+					class="btn btn-purple waves-effect waves-light">Post</button>
+			</form>
+			<br />
+			<br />
+			<br />
+
+			<div class="col-md-6 col-md-offset-3">
+
+				<%
+					for (Comment c : idea.getRedactionComments()) {
+				%>
+
+				<div class="panel panel-border panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title"><%=c.getUser().getFirstName()%>
+							<%=c.getUser().getFamilyName()%>
+							<small>on <%
+								SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+									out.print(formatter.format(c.getDate()));
+							%></small>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<p><%= c.getText() %></p>
+					</div>
+				</div>
+
+				<%
+					}
+				%>
+
+
+			</div>
+		
+		</div>
+		
+		
 	</div>
 	<div class="tab-pane <% if( idea.getStepName() == "Evaluation") out.print("active"); %>" id="Evaluation">
 		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.

@@ -304,6 +304,42 @@ public class IdeaDao {
 	}
 	
 	/**
+	 * Update an idea in db
+	 * @param i
+	 * @return
+	 */
+	public static int update(Idea i) {
+		int res = 0;
+
+		Connection cnx = null;
+		try {
+			cnx = ConnexionBDD.getInstance().getCnx();
+
+			// Requete
+			String sql = "UPDATE idea SET name=?,creationdate=?,requiredfunds=?,shortdescription=?,redactionenrich=?,proposer=?"
+					+ "WHERE id=?";
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			ps.setString(1, i.getName());
+			java.sql.Date d = new java.sql.Date(i.getCreationDate().getTime());
+			ps.setDate(2, d);
+			ps.setBigDecimal(3, i.getFundsRequired());
+			ps.setString(4, i.getShortDescription());
+			ps.setString(5, i.getRedactionEnrich());
+			ps.setInt(6, i.getProposer().getId());
+			ps.setInt(7, i.getId());
+
+			// Execution et traitement de la reponse
+			res = ps.executeUpdate();
+
+			ConnexionBDD.getInstance().closeCnx();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return res;
+	}
+	
+	/**
 	 * Delete an idea and its associated participations
 	 * @param idea
 	 * @return

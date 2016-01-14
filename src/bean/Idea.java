@@ -168,7 +168,6 @@ public abstract class Idea implements Serializable {
 		for (Contribution c : getFundingContributions()) {
 			BigDecimal result = sum.add(new BigDecimal(c.getAmount().floatValue()));
 			sum = result;
-			LOGGER.info(sum.toString());
 		}
 		return sum;
 	}
@@ -193,5 +192,14 @@ public abstract class Idea implements Serializable {
 			return ApplicationConstants.IDEA_STEPNAME_PRODUCTION;
 		}
 		return "UNKNOWN";
+	}
+	
+	public boolean userAlreadyVote(User u){
+		for (DiscussionVote dv : getDiscussionVotes()){
+			if (dv.getUser().getId() == u.getId()) return true;
+		}
+		
+		
+		return false;
 	}
 }
