@@ -21,6 +21,7 @@
 			<th>Creation date</th>
 			<th>Funds required</th>
 			<th>Short description</th>
+			<th>Phase</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -45,6 +46,7 @@
 					out.print(i.getShortDescription());
 				%>
 			</td>
+			<td><%=i.getStepName()%></td>
 
 		</tr>
 		

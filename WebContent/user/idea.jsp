@@ -144,7 +144,7 @@
 
 
 			</div>
-			String sql = "SELECT count(*) as num FROM idea
+		
 		</div>
 
 

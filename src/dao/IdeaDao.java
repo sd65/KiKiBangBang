@@ -290,6 +290,7 @@ public class IdeaDao {
 			ps.setString(6, i.getShortDescription());
 			ps.setString(7, i.getRedactionEnrich());
 			ps.setInt(8, i.getProposer().getId());
+			ps.setInt(9, i.getId());
 
 			// Execution et traitement de la reponse
 			res = ps.executeUpdate();

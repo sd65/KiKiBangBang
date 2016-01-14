@@ -172,4 +172,26 @@ public abstract class Idea implements Serializable {
 		}
 		return sum;
 	}
+	
+	public String getStepName(){
+		if (getClass().getName().equals(ProposalIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEPNAME_PROPOSAL;
+		}
+		if (getClass().getName().equals(DiscussionIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEPNAME_DISCUSSION;
+		}
+		if (getClass().getName().equals(RedactionIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEPNAME_REDACTION;
+		}
+		if (getClass().getName().equals(EvaluationIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEPNAME_EVALUATION;
+		}
+		if (getClass().getName().equals(FundingIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEPNAME_FUNDING;
+		}
+		if (getClass().getName().equals(ProductionIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEPNAME_PRODUCTION;
+		}
+		return "UNKNOWN";
+	}
 }
