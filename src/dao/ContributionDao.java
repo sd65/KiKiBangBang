@@ -30,15 +30,14 @@ public class ContributionDao {
 			cnx = ConnexionBDD.getInstance().getCnx();
 
 			// Requete
-			String sql = "INSERT INTO contribution(id,dat,participant,idea,amount) "
-					+ "VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO contribution(dat,participant,idea,amount) "
+					+ "VALUES(?,?,?,?)";
 			PreparedStatement ps = cnx.prepareStatement(sql);
-			ps.setInt(1, con.getId());
 			java.sql.Date creationDate = new java.sql.Date(con.getDate().getTime());
-			ps.setDate(2, creationDate);
-			ps.setInt(3, con.getUser().getId());
-			ps.setInt(4, idIdea);
-			ps.setBigDecimal(5, con.getAmount());
+			ps.setDate(1, creationDate);
+			ps.setInt(2, con.getUser().getId());
+			ps.setInt(3, idIdea);
+			ps.setBigDecimal(4, con.getAmount());
 			// Execution et traitement de la reponse
 			res = ps.executeUpdate();
 

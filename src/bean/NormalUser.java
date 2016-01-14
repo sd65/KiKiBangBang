@@ -2,6 +2,7 @@ package bean;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import dao.CommentDao;
 import dao.ContributionDao;
@@ -11,6 +12,7 @@ import dao.IdeaDao;
 import dao.QuestionDao;
 
 public class NormalUser extends User {
+	private static Logger LOGGER = Logger.getAnonymousLogger();
 	private int accountStatus;
 	private BigDecimal funds;
 	private Date lastConnexionDate;

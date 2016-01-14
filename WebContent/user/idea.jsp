@@ -21,29 +21,57 @@
 <br />
 <br />
 <ul class="nav nav-tabs tabs">
-	<li class="tab <% if( idea.getStepName() == "Discussion") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Discussion") out.print("active"); %>" href="#Discussion" data-toggle="tab"
-		aria-expanded="true"> <span class="visible-xs"><i
-				class="fa fa-home"></i></span> <span class="hidden-xs">Discussion</span>
+	<li
+		class="tab <%if (idea.getStepName() == "Discussion")
+				out.print("active");%>"><a
+		class="<%if (idea.getStepName() == "Discussion")
+				out.print("active");%>"
+		href="#Discussion" data-toggle="tab" aria-expanded="true"> <span
+			class="visible-xs"><i class="fa fa-home"></i></span> <span
+			class="hidden-xs">Discussion</span>
 	</a></li>
-	<li class="tab <% if( idea.getStepName() == "Redaction") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Redaction") out.print("active"); %>" href="#Redaction" data-toggle="tab"
-		aria-expanded="false"> <span class="visible-xs"><i
-				class="fa fa-user"></i></span> <span class="hidden-xs">Redaction</span>
+	<li
+		class="tab <%if (idea.getStepName() == "Redaction")
+				out.print("active");%>"><a
+		class="<%if (idea.getStepName() == "Redaction")
+				out.print("active");%>"
+		href="#Redaction" data-toggle="tab" aria-expanded="false"> <span
+			class="visible-xs"><i class="fa fa-user"></i></span> <span
+			class="hidden-xs">Redaction</span>
 	</a></li>
-	<li class="tab <% if( idea.getStepName() == "Evaluation") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Evaluation") out.print("active"); %>" href="#Evaluation" data-toggle="tab"
-		aria-expanded="false"> <span class="visible-xs"><i
-				class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Evaluation</span>
+	<li
+		class="tab <%if (idea.getStepName() == "Evaluation")
+				out.print("active");%>"><a
+		class="<%if (idea.getStepName() == "Evaluation")
+				out.print("active");%>"
+		href="#Evaluation" data-toggle="tab" aria-expanded="false"> <span
+			class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span
+			class="hidden-xs">Evaluation</span>
 	</a></li>
-	<li class="tab <% if( idea.getStepName() == "Funding") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Funding") out.print("active"); %>" href="#Funding" data-toggle="tab"
-		aria-expanded="false"> <span class="visible-xs"><i
-				class="fa fa-cog"></i></span> <span class="hidden-xs">Funding</span>
+	<li
+		class="tab <%if (idea.getStepName() == "Funding")
+				out.print("active");%>"><a
+		class="<%if (idea.getStepName() == "Funding")
+				out.print("active");%>"
+		href="#Funding" data-toggle="tab" aria-expanded="false"> <span
+			class="visible-xs"><i class="fa fa-cog"></i></span> <span
+			class="hidden-xs">Funding</span>
 	</a></li>
-	<li class="tab <% if( idea.getStepName() == "Production") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Production") out.print("active"); %>" href="#Production" data-toggle="tab"
-		aria-expanded="false"> <span class="visible-xs"><i
-				class="fa fa-cog"></i></span> <span class="hidden-xs">Production</span>
+	<li
+		class="tab <%if (idea.getStepName() == "Production")
+				out.print("active");%>"><a
+		class="<%if (idea.getStepName() == "Production")
+				out.print("active");%>"
+		href="#Production" data-toggle="tab" aria-expanded="false"> <span
+			class="visible-xs"><i class="fa fa-cog"></i></span> <span
+			class="hidden-xs">Production</span>
 	</a></li>
 </ul>
 <div class="tab-content">
-	<div class="tab-pane <% if( idea.getStepName() == "Discussion") out.print("active"); %>" id="Discussion">
+	<div
+		class="tab-pane <%if (idea.getStepName() == "Discussion")
+				out.print("active");%>"
+		id="Discussion">
 		<form class="form-horizontal" role="form" method="post" action="">
 
 			<div class="form-group">
@@ -72,38 +100,45 @@
 		</form>
 
 		<h2>User votes</h2>
-		
+
 		<div class="row">
-		
-		<h3>Score <%= idea.getDiscussionScore() %></h3>
+
+			<h3>
+				Score
+				<%=idea.getDiscussionScore()%></h3>
 
 			<form id="sdsd" class="form-horizontal" role="form" method="post">
 
-				
-				
-					<label> <input type="radio" name="vote"
-						id="optionsRadios1" value="up" checked> +
-					</label>
 
-					<label> <input type="radio" name="vote"
-						id="optionsRadios2" value="down" > -
-					</label>
-					
-				
 
-				<% if (!idea.userAlreadyVote(nu)) { %>
+				<label> <input type="radio" name="vote" id="optionsRadios1"
+					value="up" checked> +
+				</label> <label> <input type="radio" name="vote" id="optionsRadios2"
+					value="down"> -
+				</label>
+
+
+
+				<%
+					if (!idea.userAlreadyVote(nu)) {
+				%>
 				<button style="float: right;" type="submit"
 					class="btn btn-purple waves-effect waves-light">Vote</button>
-				<% } else { %>
-					<button style="float: right;" type="submitNot"
-					class="btn btn-success waves-effect waves-light" onclick="return false">You have already voted !</button>
-				<% } %>
+				<%
+					} else {
+				%>
+				<button style="float: right;" type="submitNot"
+					class="btn btn-success waves-effect waves-light"
+					onclick="return false">You have already voted !</button>
+				<%
+					}
+				%>
 			</form>
 
 		</div>
-		
+
 		<h2>Questions</h2>
-		
+
 		<div class="row">
 
 			<form class="form-horizontal" role="form" method="post">
@@ -118,9 +153,7 @@
 				<button style="float: right;" type="submit"
 					class="btn btn-purple waves-effect waves-light">Ask</button>
 			</form>
-			<br />
-			<br />
-			<br />
+			<br /> <br /> <br />
 
 			<div class="col-md-6 col-md-offset-3">
 
@@ -149,33 +182,42 @@
 
 
 			</div>
-		
+
 		</div>
 
 
-		
 
-		
+
+
 	</div>
-	<div class="tab-pane <% if( idea.getStepName() == "Redaction") out.print("active"); %>" id="Redaction">
-		
+	<div
+		class="tab-pane <%if (idea.getStepName() == "Redaction")
+				out.print("active");%>"
+		id="Redaction">
+
 		<form class="form-horizontal" role="form" method="post">
 
 			<div class="form-group">
 				<label class="col-md-2 control-label">Enriched description</label>
 				<div class="col-md-10">
-					<textarea class="form-control" name="redactionEnrich" <% if (idea.getProposer().getId() != nu.getId()) { %> readonly=""  <% } %> type="text"> <%= idea.getRedactionEnrich() %></textarea>
+					<textarea class="form-control" name="redactionEnrich"
+						<%if (idea.getProposer().getId() != nu.getId()) {%> readonly=""
+						<%}%> type="text"> <%=idea.getRedactionEnrich()%></textarea>
 				</div>
 			</div>
-			
-			<% if (idea.getProposer().getId() == nu.getId()) { %>
+
+			<%
+				if (idea.getProposer().getId() == nu.getId()) {
+			%>
 			<button style="float: right;" type="submit"
-					class="btn btn-purple waves-effect waves-light">Submit</button>
-			<% } %>
+				class="btn btn-purple waves-effect waves-light">Submit</button>
+			<%
+				}
+			%>
 		</form>
-		
+
 		<h2>Comments</h2>
-		
+
 		<div class="row">
 
 			<form class="form-horizontal" role="form" method="post">
@@ -190,9 +232,7 @@
 				<button style="float: right;" type="submit"
 					class="btn btn-purple waves-effect waves-light">Post</button>
 			</form>
-			<br />
-			<br />
-			<br />
+			<br /> <br /> <br />
 
 			<div class="col-md-6 col-md-offset-3">
 
@@ -211,7 +251,7 @@
 						</h3>
 					</div>
 					<div class="panel-body">
-						<p><%= c.getText() %></p>
+						<p><%=c.getText()%></p>
 					</div>
 				</div>
 
@@ -221,49 +261,112 @@
 
 
 			</div>
-		
+
 		</div>
+
+
+	</div>
+	<div
+		class="tab-pane <%if (idea.getStepName() == "Evaluation")
+				out.print("active");%>"
+		id="Evaluation">
+
+
+		<h3>
+			Vote score :
+			<%=idea.getEvaluationScore()%></h3>
+
+		<form id="sdsd" class="form-horizontal" role="form" method="post">
+
+			<label> Feasibility</label>
+			<div class="radio radio-primary">
+
+				<input name="voteFeasibility" value="up" id="" type="radio">
+				<label for=""> + </label> <br /> <input name="voteFeasibility"
+					value="down" id="" type="radio"> <label for=""> - </label>
+			</div>
+
+			<label> Market interest</label>
+			<div class="radio radio-primary">
+
+				<input name="voteMarkeInterest" value="up" id="" type="radio">
+				<label for=""> + </label> <br /> <input name="voteMarkeInterest"
+					value="down" id="" type="radio"> <label for=""> - </label>
+			</div>
+
+
+			<label> Impact</label>
+			<div class="radio radio-primary">
+
+				<input name="voteImpact" value="up" id="" type="radio"> <label
+					for=""> + </label> <br /> <input name="voteImpact" value="down"
+					id="" type="radio"> <label for=""> - </label>
+			</div>
+
+
+
+
+			<%
+				if (!idea.userAlreadyVote(nu)) {
+			%>
+			<button style="float: right;" type="submit"
+				class="btn btn-purple waves-effect waves-light">Vote</button>
+			<%
+				} else {
+			%>
+			<button style="float: right;" type="submitNot"
+				class="btn btn-success waves-effect waves-light"
+				onclick="return false">You have already voted !</button>
+			<%
+				}
+			%>
+		</form>
+
+
+
+	</div>
+	<div
+		class="tab-pane <%if (idea.getStepName() == "Funding")
+				out.print("active");%>"
+		id="Funding">
+
+		<h3>
+			Now funding $<%=idea.getRaisedFunds()%>
+			of $<%=idea.getFundsRequired()%>
+		</h3>
+
+		<form class="form-horizontal" role="form" method="post">
+
+			<div class="form-group">
+				<label class="col-md-2 control-label">Your donation</label>
+				<div class="col-md-10">
+					<input type="text" id="" name="newFund"
+						class="form-control input-lg" />
+				</div>
+			</div>
+			<button style="float: right;" type="submit"
+				class="btn btn-purple waves-effect waves-light">Fund!</button>
+		</form>
+
+	</div>
+	<div
+		class="tab-pane <%if (idea.getStepName() == "Production")
+				out.print("active");%>"
+		id="Production">
 		
+		Yipee !
 		
-	</div>
-	<div class="tab-pane <% if( idea.getStepName() == "Evaluation") out.print("active"); %>" id="Evaluation">
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-			Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-			penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-			Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-			Nulla consequat massa quis enim.</p>
-		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-			arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-			Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
-			dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-			tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
-			ac, enim.</p>
-	</div>
-	<div class="tab-pane <% if( idea.getStepName() == "Funding") out.print("active"); %>" id="Funding">
-		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-			arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-			Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
-			dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-			tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
-			ac, enim.</p>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-			Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-			penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-			Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-			Nulla consequat massa quis enim.</p>
-	</div>
-	<div class="tab-pane <% if( idea.getStepName() == "Production") out.print("active"); %>" id="Production">
-		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-			arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-			Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
-			dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-			tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
-			ac, enim.</p>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-			Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-			penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-			Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-			Nulla consequat massa quis enim.</p>
+		<br/><br/><br/><br/><br/>
+		<div class="panel panel-border panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Congratulation</h3>
+			</div>
+			<div class="panel-body">
+				<p>This idea is in production !</p>
+			</div>
+		</div>
+
+
 	</div>
 </div>
 

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.DiscussionIdea;
+import bean.FundingIdea;
 import bean.Idea;
 import bean.NormalUser;
 import bean.Question;
@@ -82,7 +84,34 @@ public class IdeaServlet extends HttpServlet {
 		{
 			RedactionIdea ri = (RedactionIdea) idea;
 			usr.doComment(ri, request.getParameter("newComment"));
+		} 
+	  else if (request.getParameter("newFund") != null)
+		{
+			FundingIdea ri = (FundingIdea) idea;
+			BigDecimal bd=new BigDecimal(request.getParameter("newFund"));
+			usr.contribute(ri, bd);
+			//IdeaDao.update(ri);
+		} 
+		/*
+		 *  TODO2: Save those votes !
+		else if (request.getParameter("voteFeasibility") != null)
+		{
+			if(request.getParameter("voteFeasibility") == "+")
+				// TODO2: 
+			else
+				// TODO2: 
+				
+			if(request.getParameter("voteMarkeInterest") == "+")
+				// TODO2: 
+			else
+				// TODO2
+					
+			if(request.getParameter("voteImpact") == "+")
+				// TODO2: 
+			else
+				// TODO2
 		}
+		*/
 		
 		doGet(request, response);
 	}
