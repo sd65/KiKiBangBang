@@ -2,6 +2,7 @@
 String baseUrl="http://localhost:8080/KikiBangBang"; 
 %>
 <%@page import="bean.NormalUser"%>
+<%@page import="dao.IdeaDao"%>
 
 <!DOCTYPE html>
 <html>
@@ -143,7 +144,7 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                             </li>
                             
                             <li class="has_sub"title>
-                                <a href="user/ideas" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-bar-chart"></i> <span> Ideas </span> <span class="label label-pink pull-right">11</span></a>  
+                                <a href="user/ideas" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-bar-chart"></i> <span> Ideas </span> <span class="label label-pink pull-right"><% IdeaDao.countAll(); %></span></a>  
                             </li>
                             
                             
