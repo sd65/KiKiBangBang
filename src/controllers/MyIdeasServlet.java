@@ -44,6 +44,7 @@ public class MyIdeasServlet extends HttpServlet {
 		
 		List<Idea> l = IdeaDao.findMyIdeas(usr);
 		LOGGER.info("taille " + l.size());
+		LOGGER.info(l.get(0).getName());
 		request.setAttribute("ideaList", l);
 		request.getRequestDispatcher("myIdeas.jsp").forward(request, response);
 	}

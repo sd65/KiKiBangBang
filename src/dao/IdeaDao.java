@@ -363,4 +363,59 @@ public class IdeaDao {
 		}
 		return 0;
 	}
+
+	public static int countAll() {
+		Connection cnx = null;
+		int count = 0;
+		try {
+			cnx = ConnexionBDD.getInstance().getCnx();
+
+			// Requete
+			String sql = "SELECT count(*) as num FROM idea";
+			PreparedStatement ps = cnx.prepareStatement(sql);
+
+			// Execution et traitement de la reponse
+			ResultSet res = ps.executeQuery();
+			while(res.next()){
+				count=res.getInt("num");
+				break;
+			}
+			
+			
+
+			ConnexionBDD.getInstance().closeCnx();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return count;
+	}
+	
+	public static int countForUser(NormalUser nu) {
+		Connection cnx = null;
+		int count = 0;
+		try {
+			cnx = ConnexionBDD.getInstance().getCnx();
+
+			// Requete
+			String sql = "SELECT count(*) as num FROM idea WHERE proposer=?";
+			PreparedStatement ps = cnx.prepareStatement(sql);
+			ps.setInt(1,nu.getId());
+
+			// Execution et traitement de la reponse
+			ResultSet res = ps.executeQuery();
+			while(res.next()){
+				count=res.getInt("num");
+				break;
+			}
+			
+			
+
+			ConnexionBDD.getInstance().closeCnx();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return count;
+	}
 }
