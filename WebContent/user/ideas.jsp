@@ -17,6 +17,7 @@
 	<thead>
 		<tr>
 			<th>Title</th>
+			<th>Author</th>
 			<th>Creation date</th>
 			<th>Funds required</th>
 			<th>Short description</th>
@@ -29,7 +30,9 @@
 				for (Idea i : li) {
 		%>
 		<tr>
-			<td><%=i.getName()%></td>
+		
+			<td><a href="user/idea?id=<%=i.getId()%>"><%=i.getName()%></a></td>
+			<td><%=i.getProposer().getFirstName()%> <%=i.getProposer().getFamilyName()%></td>
 			<td>
 				<%
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -44,6 +47,7 @@
 			</td>
 
 		</tr>
+		
 		<%
 			}
 			}

@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import dao.IdeaDao;
 
@@ -14,6 +15,7 @@ public abstract class Idea implements Serializable {
 	/**
 	 * 
 	 */
+	private static Logger LOGGER = Logger.getAnonymousLogger();
 	private static final long serialVersionUID = 6074952096682311133L;
 	private int id;
 	private String name;
@@ -164,7 +166,9 @@ public abstract class Idea implements Serializable {
 	public BigDecimal getRaisedFunds() {
 		BigDecimal sum = new BigDecimal(0);
 		for (Contribution c : getFundingContributions()) {
-			sum.add(c.getAmount());
+			BigDecimal result = sum.add(new BigDecimal(c.getAmount().floatValue()));
+			sum = result;
+			LOGGER.info(sum.toString());
 		}
 		return sum;
 	}

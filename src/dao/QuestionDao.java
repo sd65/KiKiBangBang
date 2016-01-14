@@ -32,18 +32,14 @@ public class QuestionDao {
 			cnx = ConnexionBDD.getInstance().getCnx();
 
 			// Requete
-			String sql = "INSERT INTO idea(id,dat,participant,idea,question,answer,answerdate) "
-					+ "VALUES(?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO question (dat,participant,idea,question) "
+					+ "VALUES(?,?,?,?)";
 			PreparedStatement ps = cnx.prepareStatement(sql);
-			ps.setInt(1, question.getId());
 			java.sql.Date creationDate = new java.sql.Date(question.getDate().getTime());
-			ps.setDate(2, creationDate);
-			ps.setInt(3, question.getUser().getId());
-			ps.setInt(4, idIdea);
-			ps.setString(5, question.getQuestion());
-			ps.setString(6, question.getAnswer());
-			java.sql.Date answerDate = new java.sql.Date(question.getDateAnswer().getTime());
-			ps.setDate(7, answerDate);
+			ps.setDate(1, creationDate);
+			ps.setInt(2, question.getUser().getId());
+			ps.setInt(3, idIdea);
+			ps.setString(4, question.getQuestion());
 
 			// Execution et traitement de la reponse
 			res = ps.executeUpdate();
@@ -116,9 +112,6 @@ public class QuestionDao {
 				NormalUser usr = UserDao.findUser(res.getInt("participant"));
 				q.setUser(usr);
 				q.setQuestion(res.getString("question"));
-				q.setAnswer(res.getString("answer"));
-				Date answerDate = new Date(res.getDate("answerDate").getTime());
-				q.setDateAnswer(answerDate);
 				lq.add(q);
 			}
 
@@ -162,9 +155,6 @@ public class QuestionDao {
 				NormalUser usr = UserDao.findUser(res.getInt("participant"));
 				q.setUser(usr);
 				q.setQuestion(res.getString("question"));
-				q.setAnswer(res.getString("answer"));
-				Date answerDate = new Date(res.getDate("answerDate").getTime());
-				q.setDateAnswer(answerDate);
 				lq.add(q);
 			}
 
