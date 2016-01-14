@@ -12,5 +12,14 @@ public class DiscussionIdea extends Idea {
 			nextStep();
 		}
 	}
+	
+	public boolean userAlreadyVote(User u){
+		for (DiscussionVote dv : getDiscussionVotes()){
+			if (dv.getUser().getId() == u.getId()) return true;
+		}
+		
+		
+		return false;
+	}
 
 }
