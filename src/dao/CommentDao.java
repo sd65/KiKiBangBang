@@ -30,15 +30,14 @@ public class CommentDao {
 			cnx = ConnexionBDD.getInstance().getCnx();
 
 			// Requete
-			String sql = "INSERT INTO commentary(id,dat,participant,idea,commentary) "
-					+ "VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO commentary(dat,participant,idea,commentary) "
+					+ "VALUES(?,?,?,?)";
 			PreparedStatement ps = cnx.prepareStatement(sql);
-			ps.setInt(1, com.getId());
 			java.sql.Date creationDate = new java.sql.Date(com.getDate().getTime());
-			ps.setDate(2, creationDate);
-			ps.setInt(3, com.getUser().getId());
-			ps.setInt(4, idIdea);
-			ps.setString(5, com.getText());
+			ps.setDate(1, creationDate);
+			ps.setInt(2, com.getUser().getId());
+			ps.setInt(3, idIdea);
+			ps.setString(4, com.getText());
 			// Execution et traitement de la reponse
 			res = ps.executeUpdate();
 

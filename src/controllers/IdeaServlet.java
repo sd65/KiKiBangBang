@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.DiscussionIdea;
+import bean.EvaluationIdea;
 import bean.FundingIdea;
 import bean.Idea;
 import bean.NormalUser;
@@ -92,26 +93,29 @@ public class IdeaServlet extends HttpServlet {
 			usr.contribute(ri, bd);
 			//IdeaDao.update(ri);
 		} 
-		/*
-		 *  TODO2: Save those votes !
 		else if (request.getParameter("voteFeasibility") != null)
 		{
-			if(request.getParameter("voteFeasibility") == "+")
-				// TODO2: 
-			else
-				// TODO2: 
-				
-			if(request.getParameter("voteMarkeInterest") == "+")
-				// TODO2: 
-			else
-				// TODO2
-					
-			if(request.getParameter("voteImpact") == "+")
-				// TODO2: 
-			else
-				// TODO2
+			EvaluationIdea ev = (EvaluationIdea) idea;
+			if(request.getParameter("voteFeasibility").equals("up")) {
+				usr.voteEvaluationUp(ev, "Feasibility");
+			}
+			else {
+				usr.voteEvaluationDown(ev, "Feasibility");
+			} 
+			
+			if(request.getParameter("voteMarkeInterest").equals("up")) {
+				usr.voteEvaluationUp(ev, "MarkeInterest"); 
+			} else {
+				usr.voteEvaluationDown(ev, "MarkeInterest");	
+			} 
+			
+			if(request.getParameter("voteImpact").equals("up")) {
+				usr.voteEvaluationUp(ev, "Impact"); 
+			} else {
+				usr.voteEvaluationDown(ev, "Impact");
+			}
 		}
-		*/
+		
 		
 		doGet(request, response);
 	}

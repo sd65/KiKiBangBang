@@ -171,8 +171,8 @@ public abstract class Idea implements Serializable {
 		}
 		return sum;
 	}
-	
-	public String getStepName(){
+
+	public String getStepName() {
 		if (getClass().getName().equals(ProposalIdea.class.getName())) {
 			return ApplicationConstants.IDEA_STEPNAME_PROPOSAL;
 		}
@@ -193,13 +193,40 @@ public abstract class Idea implements Serializable {
 		}
 		return "UNKNOWN";
 	}
-	
+
+	public int getStepNumber() {
+		if (getClass().getName().equals(ProposalIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEP_PROPOSAL;
+		}
+		if (getClass().getName().equals(DiscussionIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEP_DISCUSSION;
+		}
+		if (getClass().getName().equals(RedactionIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEP_REDACTION;
+		}
+		if (getClass().getName().equals(EvaluationIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEP_EVALUATION;
+		}
+		if (getClass().getName().equals(FundingIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEP_FUNDING;
+		}
+		if (getClass().getName().equals(ProductionIdea.class.getName())) {
+			return ApplicationConstants.IDEA_STEP_PRODUCTION;
+		}
+		return 0;
+	}
+
 	public boolean userAlreadyVote(User u){
 		for (DiscussionVote dv : getDiscussionVotes()){
 			if (dv.getUser().getId() == u.getId()) return true;
 		}
-		
-		
+
+	public boolean userAlreadyVoteEval(User u) {
+		for (EvaluationVote dv : getEvaluationVotes()) {
+			if (dv.getUser().getId() == u.getId())
+				return true;
+		}
+
 		return false;
 	}
 }

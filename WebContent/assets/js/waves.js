@@ -435,7 +435,7 @@ Tabs
 
 
       // Bind the click event handler
-      $this.on('click', 'a', function(e){
+      $this.on('click', 'a[data-toggle="tab"]', function(e){
         $tabs_width = $this.width();
         $tab_width = $this.find('li').first().outerWidth();
 

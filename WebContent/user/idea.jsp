@@ -35,7 +35,7 @@
 				out.print("active");%>"><a
 		class="<%if (idea.getStepName() == "Redaction")
 				out.print("active");%>"
-		href="#Redaction" data-toggle="tab" aria-expanded="false"> <span
+		href="#Redaction" <%if (!idea.getStepName().matches("Discussion")) out.print("data-toggle='tab'"); else { out.print("onclick='return false'"); }%> aria-expanded="false"> <span
 			class="visible-xs"><i class="fa fa-user"></i></span> <span
 			class="hidden-xs">Redaction</span>
 	</a></li>
@@ -44,7 +44,7 @@
 				out.print("active");%>"><a
 		class="<%if (idea.getStepName() == "Evaluation")
 				out.print("active");%>"
-		href="#Evaluation" data-toggle="tab" aria-expanded="false"> <span
+		href="#Evaluation" <%if (!idea.getStepName().matches("Discussion|Redaction")) out.print("data-toggle='tab'"); else { out.print("onclick='return false'"); }%> aria-expanded="false"> <span
 			class="visible-xs"><i class="fa fa-envelope-o"></i></span> <span
 			class="hidden-xs">Evaluation</span>
 	</a></li>
@@ -53,7 +53,7 @@
 				out.print("active");%>"><a
 		class="<%if (idea.getStepName() == "Funding")
 				out.print("active");%>"
-		href="#Funding" data-toggle="tab" aria-expanded="false"> <span
+		href="#Funding" <%if (!idea.getStepName().matches("Discussion|Redaction|Evaluation")) out.print("data-toggle='tab'"); else { out.print("onclick='return false'"); }%> aria-expanded="false"> <span
 			class="visible-xs"><i class="fa fa-cog"></i></span> <span
 			class="hidden-xs">Funding</span>
 	</a></li>
@@ -62,7 +62,7 @@
 				out.print("active");%>"><a
 		class="<%if (idea.getStepName() == "Production")
 				out.print("active");%>"
-		href="#Production" data-toggle="tab" aria-expanded="false"> <span
+		href="#Production" <%if (!idea.getStepName().matches("Discussion|Redaction|Evaluation|Funding")) out.print("data-toggle='tab'"); else { out.print("onclick='return false'"); }%> aria-expanded="false"> <span
 			class="visible-xs"><i class="fa fa-cog"></i></span> <span
 			class="hidden-xs">Production</span>
 	</a></li>
@@ -118,7 +118,8 @@
 				</label>
 
 
-
+				
+				<% if (idea.getStepNumber() == 1) { %>
 				<%
 					if (!idea.userAlreadyVote(nu)) {
 				%>
@@ -131,8 +132,9 @@
 					class="btn btn-success waves-effect waves-light"
 					onclick="return false">You have already voted !</button>
 				<%
-					}
+					}}
 				%>
+				
 			</form>
 
 		</div>
@@ -140,7 +142,7 @@
 		<h2>Questions</h2>
 
 		<div class="row">
-
+			<% if (idea.getStepNumber() == 2) { %>
 			<form class="form-horizontal" role="form" method="post">
 
 				<div class="form-group">
@@ -153,7 +155,9 @@
 				<button style="float: right;" type="submit"
 					class="btn btn-purple waves-effect waves-light">Ask</button>
 			</form>
-			<br /> <br /> <br />
+			<br /> <br /> <%
+					}
+				%><br />
 
 			<div class="col-md-6 col-md-offset-3">
 
@@ -161,7 +165,7 @@
 					for (Question q : idea.getDiscussionQuestions()) {
 				%>
 
-				<div class="panel panel-border panel-primary">
+				<div class="panel panel-border panel-<% if(idea.getProposer().getId() == q.getUser().getId()) out.print("danger"); else  out.print("primary"); %>">
 					<div class="panel-heading">
 						<h3 class="panel-title"><%=q.getUser().getFirstName()%>
 							<%=q.getUser().getFamilyName()%>
@@ -207,7 +211,7 @@
 			</div>
 
 			<%
-				if (idea.getProposer().getId() == nu.getId()) {
+				if (idea.getProposer().getId() == nu.getId() && idea.getStepNumber() == 2) {
 			%>
 			<button style="float: right;" type="submit"
 				class="btn btn-purple waves-effect waves-light">Submit</button>
@@ -219,7 +223,8 @@
 		<h2>Comments</h2>
 
 		<div class="row">
-
+			
+			<% if (idea.getStepNumber() == 3) { %>
 			<form class="form-horizontal" role="form" method="post">
 
 				<div class="form-group">
@@ -232,7 +237,7 @@
 				<button style="float: right;" type="submit"
 					class="btn btn-purple waves-effect waves-light">Post</button>
 			</form>
-			<br /> <br /> <br />
+			<br /> <br /> <% } %><br />
 
 			<div class="col-md-6 col-md-offset-3">
 
@@ -275,52 +280,58 @@
 		<h3>
 			Vote score :
 			<%=idea.getEvaluationScore()%></h3>
-
-		<form id="sdsd" class="form-horizontal" role="form" method="post">
+			
+			<% if (idea.getStepNumber() == 4) { %>
+		
+		<%
+				if (!idea.userAlreadyVoteEval(nu)) {
+			%>
+			
+		<form class="form-horizontal" role="form" method="post">
 
 			<label> Feasibility</label>
 			<div class="radio radio-primary">
 
-				<input name="voteFeasibility" value="up" id="" type="radio">
+				<input name="voteFeasibility" value="up" type="radio">
 				<label for=""> + </label> <br /> <input name="voteFeasibility"
-					value="down" id="" type="radio"> <label for=""> - </label>
+					value="down"  type="radio"> <label for=""> - </label>
 			</div>
 
 			<label> Market interest</label>
 			<div class="radio radio-primary">
 
-				<input name="voteMarkeInterest" value="up" id="" type="radio">
+				<input name="voteMarkeInterest" value="up"  type="radio">
 				<label for=""> + </label> <br /> <input name="voteMarkeInterest"
-					value="down" id="" type="radio"> <label for=""> - </label>
+					value="down"  type="radio"> <label for=""> - </label>
 			</div>
 
 
 			<label> Impact</label>
 			<div class="radio radio-primary">
 
-				<input name="voteImpact" value="up" id="" type="radio"> <label
+				<input name="voteImpact" value="up"  type="radio"> <label
 					for=""> + </label> <br /> <input name="voteImpact" value="down"
-					id="" type="radio"> <label for=""> - </label>
+					type="radio"> <label for=""> - </label>
 			</div>
 
 
 
 
-			<%
-				if (!idea.userAlreadyVote(nu)) {
-			%>
+			
 			<button style="float: right;" type="submit"
 				class="btn btn-purple waves-effect waves-light">Vote</button>
-			<%
+			
+		</form>
+		
+		<%
 				} else {
 			%>
-			<button style="float: right;" type="submitNot"
+			<button style="float: right;" 
 				class="btn btn-success waves-effect waves-light"
 				onclick="return false">You have already voted !</button>
 			<%
-				}
+				} }
 			%>
-		</form>
 
 
 
@@ -334,7 +345,7 @@
 			Now funding $<%=idea.getRaisedFunds()%>
 			of $<%=idea.getFundsRequired()%>
 		</h3>
-
+		<% if (idea.getStepNumber() == 5) { %>
 		<form class="form-horizontal" role="form" method="post">
 
 			<div class="form-group">
@@ -347,6 +358,8 @@
 			<button style="float: right;" type="submit"
 				class="btn btn-purple waves-effect waves-light">Fund!</button>
 		</form>
+		
+		<% } %>
 
 	</div>
 	<div
