@@ -9,7 +9,7 @@
 						<div class="form-group clearfix">
 							<label class="col-lg-2 control-label " for="title">Title</label>
 							<div class="col-lg-10">
-								<input class="form-control required" id="title"
+								<input class="form-control required" id=""
 									name="title" type="text">
 							</div>
 						</div>
@@ -17,7 +17,7 @@
 							<label class="col-lg-2 control-label " for="description">Description
 								</label>
 							<div class="col-lg-10">
-								<input id="description" name="description" type="text"
+								<input id="" name="description" type="text"
 									class="required form-control">
 
 							</div>
@@ -50,7 +50,7 @@
 					<div class="form-group clearfix">
 							<label class="col-lg-2 control-label " for="fundingRequested">Funding requested</label>
 							<div class="col-lg-10">
-								<input id="fundingRequested" name="fundingRequested" type="text"
+								<input id="" name="fundingRequested" type="text"
 									class="required form-control">
 
 							</div>

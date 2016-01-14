@@ -1,4 +1,8 @@
-<% String baseUrl="http://localhost:8080/KikiBangBang"; %>
+<% 
+String baseUrl="http://localhost:8080/KikiBangBang"; 
+%>
+<%@page import="bean.NormalUser"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,6 +40,12 @@
 		<!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
+        
+        <% 
+        NormalUser nu = (NormalUser)session.getAttribute("userLogged");
+        if(nu == null && !userType.equals("none")) {
+       		response.sendRedirect(baseUrl);
+       	} %>
 
     </head>
 
@@ -81,10 +91,10 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
+                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile of <%  if(nu != null && !userType.equals("none")) { out.print(nu.getEmail()); }  %></a></li>
                                         <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
                                         <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                        <li><a href="<%= baseUrl %>"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
