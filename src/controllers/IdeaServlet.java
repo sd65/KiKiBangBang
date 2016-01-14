@@ -57,10 +57,20 @@ public class IdeaServlet extends HttpServlet {
 		int ideaID = Integer.parseInt(request.getParameter("id"));
 		Idea idea = IdeaDao.find(ideaID);
 		NormalUser usr = (NormalUser) session.getAttribute("userLogged");
-		if (!request.getParameter("newQuestion").equals(""))
+		
+		
+		if (request.getParameter("newQuestion") != null)
 		{
 			DiscussionIdea di = (DiscussionIdea) idea;
 			usr.askQuestion(di,request.getParameter("newQuestion"));
+			
+		} else if (request.getParameter("vote") != null)
+		{
+			DiscussionIdea di = (DiscussionIdea) idea;
+			if(request.getParameter("vote").equals("up"))
+				usr.thumbUp(di);
+			else
+				usr.thumbDown(di);
 			
 		}
 		

@@ -48,8 +48,8 @@
 			<div class="form-group">
 				<label class="col-md-2 control-label">Title</label>
 				<div class="col-md-10">
-					<input class="form-control" readonly=""
-						value="<%=idea.getName()%>" type="text">
+					<input class="form-control" readonly="" value="<%=idea.getName()%>"
+						type="text">
 				</div>
 			</div>
 
@@ -69,83 +69,88 @@
 			</div>
 
 		</form>
-		
+
 		<h2>User votes</h2>
 		
 		<div class="row">
 		
-		<form class="form-horizontal" role="form" method="post">
+		<h3>Score <%= idea.getDiscussionScore() %></h3>
 
-			<div class="form-group">
-				<label class="col-md-2 control-label">Your question:</label>
-				<div class="col-md-10">
-					<textarea type="text" id="" name="newQuestion" class="form-control input-lg"></textarea>
-				</div>
-			</div>
-			<button style="float: right;" type="submit" class="btn btn-purple waves-effect waves-light">Ask</button>
-		</form>
-<br /><br /><br />
-		
-			<div class="col-md-6 col-md-offset-3">
+			<form id="sdsd" class="form-horizontal" role="form" method="post">
+
 				
-				<% for(Question q : idea.getDiscussionQuestions()) { %>
 				
-				<div class="panel panel-border panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title"><%= q.getUser().getFirstName() %> <%= q.getUser().getFamilyName() %> <small>on <%
-					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-							out.print(formatter.format(q.getDate()));
-				%></small></h3>
-					</div>
-					<div class="panel-body">
-						<p><%= q.getQuestion() %></p>
-					</div>
-				</div>
-				
-				<% } %>
+					<label> <input type="radio" name="vote"
+						id="optionsRadios1" value="up" checked> +
+					</label>
+
+					<label> <input type="radio" name="vote"
+						id="optionsRadios2" value="down" > -
+					</label>
+					
 				
 
-			</div>
+
+				<button style="float: right;" type="submit"
+					class="btn btn-purple waves-effect waves-light">Vote</button>
+			</form>
+
 		</div>
 		
-
 		<h2>Questions</h2>
 		
 		<div class="row">
-		
-		<form class="form-horizontal" role="form" method="post">
 
-			<div class="form-group">
-				<label class="col-md-2 control-label">Your question:</label>
-				<div class="col-md-10">
-					<textarea type="text" id="" name="newQuestion" class="form-control input-lg"></textarea>
+			<form class="form-horizontal" role="form" method="post">
+
+				<div class="form-group">
+					<label class="col-md-2 control-label">Your question:</label>
+					<div class="col-md-10">
+						<textarea type="text" id="" name="newQuestion"
+							class="form-control input-lg"></textarea>
+					</div>
 				</div>
-			</div>
-			<button style="float: right;" type="submit" class="btn btn-purple waves-effect waves-light">Ask</button>
-		</form>
-<br /><br /><br />
-		
+				<button style="float: right;" type="submit"
+					class="btn btn-purple waves-effect waves-light">Ask</button>
+			</form>
+			<br />
+			<br />
+			<br />
+
 			<div class="col-md-6 col-md-offset-3">
-				
-				<% for(Question q : idea.getDiscussionQuestions()) { %>
-				
+
+				<%
+					for (Question q : idea.getDiscussionQuestions()) {
+				%>
+
 				<div class="panel panel-border panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title"><%= q.getUser().getFirstName() %> <%= q.getUser().getFamilyName() %> <small>on <%
-					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-							out.print(formatter.format(q.getDate()));
-				%></small></h3>
+						<h3 class="panel-title"><%=q.getUser().getFirstName()%>
+							<%=q.getUser().getFamilyName()%>
+							<small>on <%
+								SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+									out.print(formatter.format(q.getDate()));
+							%></small>
+						</h3>
 					</div>
 					<div class="panel-body">
-						<p><%= q.getQuestion() %></p>
+						<p><%=q.getQuestion()%></p>
 					</div>
 				</div>
-				
-				<% } %>
-				
+
+				<%
+					}
+				%>
+
 
 			</div>
+			String sql = "SELECT count(*) as num FROM idea
 		</div>
+
+
+		
+
+		
 	</div>
 	<div class="tab-pane" id="Redaction">
 		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget,

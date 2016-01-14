@@ -30,15 +30,14 @@ public class DiscussionVoteDao {
 			cnx = ConnexionBDD.getInstance().getCnx();
 
 			// Requete
-			String sql = "INSERT INTO discussionvote(id,dat,participant,idea,updown) "
-					+ "VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO discussionvote(dat,participant,idea,updown) "
+					+ "VALUES(?,?,?,?)";
 			PreparedStatement ps = cnx.prepareStatement(sql);
-			ps.setInt(1, dv.getId());
 			java.sql.Date creationDate = new java.sql.Date(dv.getDate().getTime());
-			ps.setDate(2, creationDate);
-			ps.setInt(3, dv.getUser().getId());
-			ps.setInt(4, idIdea);
-			ps.setInt(5, dv.getUpDown());
+			ps.setDate(1, creationDate);
+			ps.setInt(2, dv.getUser().getId());
+			ps.setInt(3, idIdea);
+			ps.setInt(4, dv.getUpDown());
 			// Execution et traitement de la reponse
 			res = ps.executeUpdate();
 
