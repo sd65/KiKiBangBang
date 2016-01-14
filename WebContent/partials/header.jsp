@@ -126,11 +126,11 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                             </li>
                             
                             <li class="has_sub"title>
-                                <a href="admin/users.jsp" class="waves-effect <% if (pageTitle.startsWith("Users")) out.print("active");%>"><i class="ti-user"></i> <span> Users </span> </a>  
+                                <a href="admin/users" class="waves-effect <% if (pageTitle.startsWith("Users")) out.print("active");%>"><i class="ti-user"></i> <span> Users </span> </a>  
                             </li>
                             
                              <li class="has_sub"title>
-                                <a href="admin/ideas.jsp" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> Ideas </span> </a>  
+                                <a href="admin/ideas" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> Ideas </span> </a>  
                             </li>
                             
                             <% } else if (userType=="user") { %>

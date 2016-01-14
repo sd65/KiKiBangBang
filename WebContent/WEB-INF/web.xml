@@ -48,4 +48,20 @@
     <servlet-name>IdeaServlet</servlet-name>
     <url-pattern>/user/idea</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>usersServlet</servlet-name>
+    <servlet-class>controllers.usersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>usersServlet</servlet-name>
+    <url-pattern>/admin/users</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminIdeasServlet</servlet-name>
+    <servlet-class>controllers.AdminIdeasServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminIdeasServlet</servlet-name>
+    <url-pattern>/admin/ideas</url-pattern>
+  </servlet-mapping>
 </web-app>
