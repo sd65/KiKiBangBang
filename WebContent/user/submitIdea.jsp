@@ -2,65 +2,65 @@
 <%@include file="../partials/header.jsp"%>
 
 
-			<form id="basic-form" action="#" method="post">
+			<form id="basic-form" action="SubmitIdeaServlet" method="post">
 				<div>
 					<h3>Basic info</h3>
 					<section>
 						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="userName">Title</label>
+							<label class="col-lg-2 control-label " for="title">Title</label>
 							<div class="col-lg-10">
-								<input class="form-control required" id="userName"
+								<input class="form-control required" id="title"
 									name="title" type="text">
 							</div>
 						</div>
 						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="password">Description
+							<label class="col-lg-2 control-label " for="description">Description
 								</label>
 							<div class="col-lg-10">
-								<input id="password" name="description" type="text"
+								<input id="description" name="description" type="text"
 									class="required form-control">
 
 							</div>
 						</div>
 
 					</section>
-					<h3>Aims</h3>
-					<section>
-						<div class="form-group clearfix">
+<!-- 					<h3>Aims</h3> -->
+<!-- 					<section> -->
+<!-- 						<div class="form-group clearfix"> -->
 
-							<label class="col-lg-2 control-label" for="name"> Application field</label>
-							<div class="col-lg-10">
-								<input id="name" name="applicationField" type="text"
-									class="required form-control">
-							</div>
-						</div>
-						<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="surname">Targeted market</label>
-							<div class="col-lg-10">
-								<input id="surname" name="targetedMarket" type="text"
-									class="required form-control">
+<!-- 							<label class="col-lg-2 control-label" for="name"> Application field</label> -->
+<!-- 							<div class="col-lg-10"> -->
+<!-- 								<input id="name" name="applicationField" type="text" -->
+<!-- 									class="required form-control"> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="form-group clearfix"> -->
+<!-- 							<label class="col-lg-2 control-label " for="surname">Targeted market</label> -->
+<!-- 							<div class="col-lg-10"> -->
+<!-- 								<input id="surname" name="targetedMarket" type="text" -->
+<!-- 									class="required form-control"> -->
 
-							</div>
-						</div>
+<!-- 							</div> -->
+<!-- 						</div> -->
 
-					</section>
+<!-- 					</section> -->
 					<h3>Money</h3>
 					<section>
 					
 					<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="surname">Funding requested</label>
+							<label class="col-lg-2 control-label " for="fundingRequested">Funding requested</label>
 							<div class="col-lg-10">
-								<input id="surname" name="fundingRequested" type="text"
+								<input id="fundingRequested" name="fundingRequested" type="text"
 									class="required form-control">
 
 							</div>
 						</div>
 						
 					</section>
-					<h3></h3>
+					<h3>Terms of use agreement</h3>
 					<section>
 					<div class="form-group clearfix">
-							<label class="col-lg-2 control-label " for="surname">Terms and
+							<label class="col-lg-2 control-label " for="termsOfUse">Terms and
 										Conditions</label>
 							<div class="col-lg-10">
 								<textarea  
@@ -77,7 +77,7 @@ Nec minus feminae quoque calamitatum participes fuere similium. nam ex hoc quoqu
 						<div class="form-group clearfix">
 							<div class="col-lg-12">
 								<div class="checkbox checkbox-primary">
-									<input id="checkbox-h" type="checkbox"> <label
+									<input id="checkbox-h" name="termsOfUseCheckbox" type="checkbox"> <label
 										for="checkbox-h"> I agree with the Terms and
 										Conditions. </label>
 								</div>

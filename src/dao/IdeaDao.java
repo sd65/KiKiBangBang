@@ -32,20 +32,19 @@ public class IdeaDao {
 			cnx = ConnexionBDD.getInstance().getCnx();
 
 			// Requete
-			String sql = "INSERT INTO idea(id,name,creationdate,requiredfunds,step,stepdate,shortdescription,redactionenrich,proposer) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO idea(name,creationdate,requiredfunds,step,stepdate,shortdescription,redactionenrich,proposer) "
+					+ "VALUES(?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = cnx.prepareStatement(sql);
-			ps.setInt(1, idea.getId());
-			ps.setString(2, idea.getName());
+			ps.setString(1, idea.getName());
 			java.sql.Date creationDate = new java.sql.Date(idea.getCreationDate().getTime());
-			ps.setDate(3, creationDate);
-			ps.setBigDecimal(4, idea.getFundsRequired());
-			ps.setInt(5, getStepNumber(idea));
-			java.sql.Date stepDate = new java.sql.Date(idea.getStepDate().getTime());
-			ps.setDate(6, stepDate);
-			ps.setString(7, idea.getShortDescription());
-			ps.setString(8, idea.getRedactionEnrich());
-			ps.setInt(9, idea.getProposer().getId());
+			ps.setDate(2, creationDate);
+			ps.setBigDecimal(3, idea.getFundsRequired());
+			ps.setInt(4, getStepNumber(idea));
+			java.sql.Date stepDate = new java.sql.Date(new Date().getTime());
+			ps.setDate(5, stepDate);
+			ps.setString(6, idea.getShortDescription());
+			ps.setString(7, idea.getRedactionEnrich());
+			ps.setInt(8, idea.getProposer().getId());
 
 			// Execution et traitement de la reponse
 			res = ps.executeUpdate();

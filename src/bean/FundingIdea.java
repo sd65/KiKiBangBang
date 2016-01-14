@@ -14,11 +14,12 @@ public class FundingIdea extends Idea {
 		cal.setTime(getStepDate());
 		cal.add(Calendar.DATE, ApplicationConstants.IDEA_NEXTSTEP_FUNDING);
 		Date nextStepTheoricalDate = cal.getTime();
-		if (now.after(nextStepTheoricalDate)){
-			if (getRaisedFunds().compareTo(getFundsRequired())>=0)
-			nextStep();
-			else
-				IdeaDao.
+		if (now.after(nextStepTheoricalDate)) {
+			if (getRaisedFunds().compareTo(getFundsRequired()) >= 0) {
+				nextStep();
+			} else {
+				IdeaDao.delete(this);
+			}
 		}
 	}
 

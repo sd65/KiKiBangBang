@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Admin;
 import bean.NormalUser;
@@ -53,6 +54,8 @@ public class LoginServlet extends HttpServlet {
 		out.println("DAO Reccup�r�");
 		out.println(nu.getEmail());
 		out.println(nu.getPassword());
+
+		HttpSession session = request.getSession();
 		if (nu.getEmail()==null){
 			//TODO Erreur - utilisateur inexistant
 			// TODO verifier admin
@@ -67,6 +70,7 @@ public class LoginServlet extends HttpServlet {
 			else {
 				//TODO Authentification admin r�ussie ->/admin
 				out.print("redirect Admin accueil");
+				session.setAttribute("userLogged", adm);
 				response.sendRedirect("admin/");
 			}
 		}
@@ -77,6 +81,8 @@ public class LoginServlet extends HttpServlet {
 		else {
 			// TODO Authentification r�ussie
 			out.println("redirect NormalUser accueil");
+
+			session.setAttribute("userLogged", nu);
 			response.sendRedirect("user/");
 		}
 	}
