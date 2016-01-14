@@ -20,29 +20,29 @@
 <br />
 <br />
 <ul class="nav nav-tabs tabs">
-	<li class="tab active"><a href="#Discussion" data-toggle="tab"
+	<li class="tab <% if( idea.getStepName() == "Discussion") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Discussion") out.print("active"); %>" href="#Discussion" data-toggle="tab"
 		aria-expanded="true"> <span class="visible-xs"><i
 				class="fa fa-home"></i></span> <span class="hidden-xs">Discussion</span>
 	</a></li>
-	<li class="tab"><a href="#Redaction" data-toggle="tab"
+	<li class="tab <% if( idea.getStepName() == "Redaction") out.print("active"); %>"><a class="<% if( idea.getStepName() == "Redaction") out.print("active"); %>" href="#Redaction" data-toggle="tab"
 		aria-expanded="false"> <span class="visible-xs"><i
 				class="fa fa-user"></i></span> <span class="hidden-xs">Redaction</span>
 	</a></li>
-	<li class="tab"><a href="#Evaluation" data-toggle="tab"
+	<li class="tab <% if( idea.getStepName() == "Evaluation") out.print("active"); %>"><a href="#Evaluation" data-toggle="tab"
 		aria-expanded="false"> <span class="visible-xs"><i
 				class="fa fa-envelope-o"></i></span> <span class="hidden-xs">Evaluation</span>
 	</a></li>
-	<li class="tab"><a href="#Funding" data-toggle="tab"
+	<li class="tab <% if( idea.getStepName() == "Funding") out.print("active"); %>"><a href="#Funding" data-toggle="tab"
 		aria-expanded="false"> <span class="visible-xs"><i
 				class="fa fa-cog"></i></span> <span class="hidden-xs">Funding</span>
 	</a></li>
-	<li class="tab"><a href="#Production" data-toggle="tab"
+	<li class="tab <% if( idea.getStepName() == "Production") out.print("active"); %>"><a href="#Production" data-toggle="tab"
 		aria-expanded="false"> <span class="visible-xs"><i
 				class="fa fa-cog"></i></span> <span class="hidden-xs">Production</span>
 	</a></li>
 </ul>
 <div class="tab-content">
-	<div class="tab-pane active" id="Discussion">
+	<div class="tab-pane <% if( idea.getStepName() == "Discussion") out.print("active"); %>" id="Discussion">
 		<form class="form-horizontal" role="form" method="post" action="">
 
 			<div class="form-group">
@@ -152,7 +152,7 @@
 
 		
 	</div>
-	<div class="tab-pane" id="Redaction">
+	<div class="tab-pane <% if( idea.getStepName() == "Redaction") out.print("active"); %>" id="Redaction">
 		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
 			arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
 			Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
@@ -165,7 +165,7 @@
 			Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
 			Nulla consequat massa quis enim.</p>
 	</div>
-	<div class="tab-pane" id="Evaluation">
+	<div class="tab-pane <% if( idea.getStepName() == "Evaluation") out.print("active"); %>" id="Evaluation">
 		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 			Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
 			penatibus et magnis dis parturient montes, nascetur ridiculus mus.
@@ -178,7 +178,7 @@
 			tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
 			ac, enim.</p>
 	</div>
-	<div class="tab-pane" id="Funding">
+	<div class="tab-pane <% if( idea.getStepName() == "Funding") out.print("active"); %>" id="Funding">
 		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
 			arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
 			Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
@@ -191,7 +191,7 @@
 			Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
 			Nulla consequat massa quis enim.</p>
 	</div>
-	<div class="tab-pane" id="Production">
+	<div class="tab-pane <% if( idea.getStepName() == "Production") out.print("active"); %>" id="Production">
 		<p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
 			arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
 			Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
