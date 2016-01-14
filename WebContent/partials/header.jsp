@@ -140,11 +140,11 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                             </li>
                             
                             <li class="has_sub"title>
-                                <a href="user/myIdeas" class="waves-effect <% if (pageTitle.startsWith("My")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> My ideas <span class="label label-success pull-right">3</span></span> </a>  
+                                <a href="user/myIdeas" class="waves-effect <% if (pageTitle.startsWith("My")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> My ideas <span class="label label-success pull-right"><%= IdeaDao.countForUser(nu) %></span></span> </a>  
                             </li>
                             
                             <li class="has_sub"title>
-                                <a href="user/ideas" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-bar-chart"></i> <span> Ideas </span> <span class="label label-pink pull-right"><% IdeaDao.countAll(); %></span></a>  
+                                <a href="user/ideas" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-bar-chart"></i> <span> Ideas </span> <span class="label label-pink pull-right"><%= IdeaDao.countAll() %></span></a>  
                             </li>
                             
                             
