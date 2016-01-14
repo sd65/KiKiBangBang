@@ -36,4 +36,13 @@
 		<servlet-name>MyIdeasServlet</servlet-name>
 		<url-pattern>/user/myIdeas</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>IdeasServlet</servlet-name>
+		<servlet-class>controllers.IdeasServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IdeasServlet</servlet-name>
+		<url-pattern>/user/ideas</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -4,19 +4,12 @@
 
 <%@page import="bean.Idea"%>
 <%@page import="java.util.List"%>
+<%@page import="java.text.SimpleDateFormat"%>
 
 <%
-out.println("obj1");
 	Object obj = request.getAttribute("ideaList");
 	
-	if(obj!=null){
- 		out.println("beofre");
- 		List<Idea> li = (List<Idea>)obj;
- 		out.println("list");
- 		for(Idea i : li){
- 			out.println(i.getName());
-		}
-	}
+	
 %>
 
 <table class="table table-striped" id="datatable-editable">
@@ -29,11 +22,18 @@ out.println("obj1");
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>Firstname</td>
-			<td>Familly Name</td>
-			<td>Email</td>
-			<td>Address</td>
+		
+	<% 
+		if(obj!=null){
+ 		List<Idea> li = (List<Idea>)obj;
+ 		for(Idea i : li){
+	
+	%>
+			<tr>
+			<td><%= i.getName() %> </td>
+			<td><% SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd"); out.print(formatter.format(i.getCreationDate()) ); %> </td>
+			<td><%= i.getFundsRequired() %> </td>
+			<td><% out.print(i.getShortDescription());  %> </td>
 			<td class="actions"><a href="#"
 				class="hidden on-editing save-row"><i class="fa fa-save"></i></a> <a
 				href="#" class="hidden on-editing cancel-row"><i
@@ -41,6 +41,7 @@ out.println("obj1");
 					class="fa fa-pencil"></i></a> <a href="#" class="on-default remove-row"><i
 					class="fa fa-trash-o"></i></a></td>
 		</tr>
+	<%  } } %>
 	</tbody>
 </table>
 

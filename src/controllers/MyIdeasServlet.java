@@ -37,7 +37,7 @@ public class MyIdeasServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		// Récupérer la liste des idées de l'user connecté.
+		// Rï¿½cupï¿½rer la liste des idï¿½es de l'user connectï¿½.
 		HttpSession session = request.getSession();
 		NormalUser usr = (NormalUser) session.getAttribute("userLogged");
 		LOGGER.info("User logged : " + usr.getEmail());
@@ -45,7 +45,7 @@ public class MyIdeasServlet extends HttpServlet {
 		List<Idea> l = IdeaDao.findMyIdeas(usr);
 		LOGGER.info("taille " + l.size());
 		request.setAttribute("ideaList", l);
-		response.sendRedirect("myIdeas.jsp");
+		request.getRequestDispatcher("myIdeas.jsp").forward(request, response);
 	}
 
 	/**
