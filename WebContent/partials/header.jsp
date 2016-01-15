@@ -26,7 +26,7 @@ String baseUrl="http://localhost:8080/KikiBangBang";
         <link href="<%= baseUrl %>/assets/css/pages.css" rel="stylesheet" type="text/css" />
         <link href="<%= baseUrl %>/assets/css/responsive.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<%= baseUrl %>/assets/plugins/magnific-popup/dist/magnific-popup.css" />
-        <link rel="stylesheet" href="<%= baseUrl %>/assets/plugins/jquery-datatables-editable/datatables.css" />
+        <link rel="stylesheet" href="<%= baseUrl %>/assets/plulgins/jquery-datatables-editable/datatables.css" />
         
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -62,7 +62,7 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Ub<i class="md md-album"></i>ld</span></a>
+                        <a href="index.html" class="logo"><img style="height:48px" src="kiki.png" /></span></a>
                     </div>
                 </div>
 
@@ -90,7 +90,7 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                                 </li>
 
                                 <li class="dropdown">
-                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="sasha.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile of <%  if(nu != null && !userType.equals("none")) { out.print(nu.getEmail()); }  %></a></li>
                                         <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>

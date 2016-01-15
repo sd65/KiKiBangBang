@@ -119,7 +119,7 @@
 
 
 				
-				<% if (idea.getStepNumber() == 1) { %>
+				<% if (idea.getStepNumber() == 2) { %>
 				<%
 					if (!idea.userAlreadyVote(nu)) {
 				%>

@@ -220,6 +220,8 @@ public abstract class Idea implements Serializable {
 		for (DiscussionVote dv : getDiscussionVotes()){
 			if (dv.getUser().getId() == u.getId()) return true;
 		}
+		return false;
+	}
 
 	public boolean userAlreadyVoteEval(User u) {
 		for (EvaluationVote dv : getEvaluationVotes()) {
