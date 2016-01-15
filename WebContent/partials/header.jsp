@@ -68,7 +68,7 @@ String baseUrl="http://localhost:8080/KikiBangBang";
 
                 <!-- Button mobile view to collapse sidebar menu -->
                 <div class="navbar navbar-default" role="navigation">
-                    <div class="container">
+                    <div class="container" style="border-bottom: 3px solid rgb(251, 109, 157);">
                         <div class="">
                             <div class="pull-left">
                                 <button class="button-menu-mobile open-left">
