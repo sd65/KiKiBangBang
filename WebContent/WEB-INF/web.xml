@@ -64,4 +64,23 @@
     <servlet-name>AdminIdeasServlet</servlet-name>
     <url-pattern>/admin/ideas</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DashboardServlet</servlet-name>
+    <servlet-class>controllers.DashboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DashboardServlet</servlet-name>
+    <url-pattern>/admin/dashboard</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>deleteIdea</servlet-name>
+    <servlet-class>controllers.deleteIdea</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteIdea</servlet-name>
+    <url-pattern>/admin/deleteIdea</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

@@ -2,6 +2,8 @@
 String baseUrl="http://localhost:8080/KikiBangBang"; 
 %>
 <%@page import="bean.NormalUser"%>
+<%@page import="bean.Admin"%>
+<%@page import="bean.User"%>
 <%@page import="dao.IdeaDao"%>
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ String baseUrl="http://localhost:8080/KikiBangBang";
         <title>KiKiBangBang - <%= pageTitle %></title>
 
         <!--Morris Chart CSS -->
-		 <link rel="stylesheet" href="<%= baseUrl %>/assets/plugins/morris/morris.css">
+         <link rel="stylesheet" href="<%= baseUrl %>/assets/plugins/morris/morris.css">
 
         <link href="<%= baseUrl %>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<%= baseUrl %>/assets/css/core.css" rel="stylesheet" type="text/css" />
@@ -35,18 +37,21 @@ String baseUrl="http://localhost:8080/KikiBangBang";
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-		<base href="<%= baseUrl %>/">
+        <base href="<%= baseUrl %>/">
         <script src="assets/js/modernizr.min.js"></script>
-		
-		<!-- jQuery  -->
+        
+        <!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         
-        <% 
-        NormalUser nu = (NormalUser)session.getAttribute("userLogged");
-        if(nu == null && !userType.equals("none")) {
-       		response.sendRedirect(baseUrl);
-       	} %>
+        <%
+        User nu = null;
+        if(userType.equals("user")) {
+            nu = (NormalUser)session.getAttribute("userLogged");
+        } else if(userType.equals("admin")) {
+            nu = (Admin)session.getAttribute("userLogged");
+        }
+        %>
 
     </head>
 
@@ -78,9 +83,9 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                             </div>
 
                             <form role="search" class="navbar-left app-search pull-left hidden-xs">
-			                     <input type="text" placeholder="Search..." class="form-control">
-			                     <a href=""><i class="fa fa-search"></i></a>
-			                </form>
+                                 <input type="text" placeholder="Search..." class="form-control">
+                                 <a href=""><i class="fa fa-search"></i></a>
+                            </form>
 
 
                             <ul class="nav navbar-nav navbar-right pull-right">
@@ -88,16 +93,15 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                                 <li class="hidden-xs">
                                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
                                 </li>
-
+                                <% if (!userType.equals("none"))  { %>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="sasha.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile of <%  if(nu != null && !userType.equals("none")) { out.print(nu.getEmail()); }  %></a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
+                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile of <%= nu.getEmail() %></a></li>
                                         <li><a href="<%= baseUrl %>"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
                                 </li>
+                                <% } %>
                             </ul>
                         </div>
                         <!--/.nav-collapse -->
@@ -115,12 +119,12 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                     <div id="sidebar-menu">
                         <ul>
                         
-                        	
-                        	
-
-                            <% if (userType=="admin")  { %>
                             
-                            	
+                            
+
+                            <% if (userType.equals("admin"))  { %>
+                            
+                                
                             <li class="has_sub"title>
                                 <a href="admin/dashboard.jsp" class="waves-effect <% if (pageTitle.startsWith("Dashboard")) out.print("active");%>"><i class="ti-home"></i> <span> Dashboard </span> </a>  
                             </li>
@@ -133,14 +137,15 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                                 <a href="admin/ideas" class="waves-effect <% if (pageTitle.startsWith("Ideas")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> Ideas </span> </a>  
                             </li>
                             
-                            <% } else if (userType=="user") { %>
+                            <% } else if (userType.equals("user")) {
+                            	NormalUser nu1 = (NormalUser)session.getAttribute("userLogged"); %>
                             
                             <li class="has_sub"title>
                                 <a href="user/submitIdea.jsp" class="waves-effect <% if (pageTitle.startsWith("Submit")) out.print("active");%>"><i class="ti-pencil-alt"></i> <span> Submit an idea </span> </a>  
                             </li>
                             
                             <li class="has_sub"title>
-                                <a href="user/myIdeas" class="waves-effect <% if (pageTitle.startsWith("My")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> My ideas <span class="label label-success pull-right"><%= IdeaDao.countForUser(nu) %></span></span> </a>  
+                                <a href="user/myIdeas" class="waves-effect <% if (pageTitle.startsWith("My")) out.print("active");%>"><i class="ti-light-bulb"></i> <span> My ideas <span class="label label-success pull-right"><%= IdeaDao.countForUser(nu1) %></span></span> </a>  
                             </li>
                             
                             <li class="has_sub"title>
@@ -167,10 +172,10 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                     <div class="container">
                     
                     <div class="row">
-	<div class="col-sm-12">
-		<div class="card-box">
-			<h4 class="m-t-0 header-title"><b><%= pageTitle %></b></h4>
-			
-			
-			
-			
+    <div class="col-sm-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title"><b><%= pageTitle %></b></h4>
+            
+            
+            
+            

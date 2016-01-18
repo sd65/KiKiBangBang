@@ -211,7 +211,7 @@
 			</div>
 
 			<%
-				if (idea.getProposer().getId() == nu.getId() && idea.getStepNumber() == 2) {
+				if (idea.getProposer().getId() == nu.getId() && idea.getStepNumber() == 3) {
 			%>
 			<button style="float: right;" type="submit"
 				class="btn btn-purple waves-effect waves-light">Submit</button>

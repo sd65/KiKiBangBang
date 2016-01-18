@@ -363,6 +363,8 @@ public class IdeaDao {
 			EvaluationVoteDao.onDeleteIdea(i.getId());		
 			ContributionDao.onDeleteIdea(i.getId());
 			// Requete
+			cnx = ConnexionBDD.getInstance().getCnx();
+			LOGGER.info("*** ID A SUPPRIMER *** " + i.getId());
 			String sql = "DELETE FROM idea WHERE id=?";
 			PreparedStatement ps = cnx.prepareStatement(sql);
 			ps.setInt(1, i.getId());

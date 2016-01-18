@@ -68,7 +68,7 @@
 			</td>
 			<td><%=i.getStepName()%></td>
 			<td class="actions">
-	            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+	            <a href="deleteIdea?id=<%=i.getId()%>" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
         	</td>
 
 		</tr>
