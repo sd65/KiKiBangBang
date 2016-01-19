@@ -14,10 +14,10 @@
 <div class="form-group">
     <label class="col-md-2 control-label">Password</label>
     <div class="col-md-10">
-        <input type="password" id="pwd" name="pwd" class="form-control">
+        <input type="password" placeholder="Top secret password" id="pwd" name="pwd" class="form-control">
     </div>
 </div>
-<button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
+<button type="submit" class="btn btn-pink waves-effect waves-light">Submit</button>
 </form>
 		<br/>
 <a href="signIn.jsp">Sign up!</a>				

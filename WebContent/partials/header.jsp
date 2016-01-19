@@ -28,7 +28,7 @@ String baseUrl="http://localhost:8080/KikiBangBang";
         <link href="<%= baseUrl %>/assets/css/pages.css" rel="stylesheet" type="text/css" />
         <link href="<%= baseUrl %>/assets/css/responsive.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<%= baseUrl %>/assets/plugins/magnific-popup/dist/magnific-popup.css" />
-        <link rel="stylesheet" href="<%= baseUrl %>/assets/plulgins/jquery-datatables-editable/datatables.css" />
+        <link rel="stylesheet" href="<%= baseUrl %>/assets/plugins/jquery-datatables-editable/datatables.css" />
         
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->

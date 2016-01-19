@@ -124,7 +124,7 @@
 					if (!idea.userAlreadyVote(nu)) {
 				%>
 				<button style="float: right;" type="submit"
-					class="btn btn-purple waves-effect waves-light">Vote</button>
+					class="btn btn-pink waves-effect waves-light">Vote</button>
 				<%
 					} else {
 				%>
@@ -153,7 +153,7 @@
 					</div>
 				</div>
 				<button style="float: right;" type="submit"
-					class="btn btn-purple waves-effect waves-light">Ask</button>
+					class="btn btn-pink waves-effect waves-light">Ask</button>
 			</form>
 			<br /> <br /> <%
 					}
@@ -214,7 +214,7 @@
 				if (idea.getProposer().getId() == nu.getId() && idea.getStepNumber() == 3) {
 			%>
 			<button style="float: right;" type="submit"
-				class="btn btn-purple waves-effect waves-light">Submit</button>
+				class="btn btn-pink waves-effect waves-light">Submit</button>
 			<%
 				}
 			%>
@@ -235,7 +235,7 @@
 					</div>
 				</div>
 				<button style="float: right;" type="submit"
-					class="btn btn-purple waves-effect waves-light">Post</button>
+					class="btn btn-pink waves-effect waves-light">Post</button>
 			</form>
 			<br /> <br /> <% } %><br />
 
@@ -319,7 +319,7 @@
 
 			
 			<button style="float: right;" type="submit"
-				class="btn btn-purple waves-effect waves-light">Vote</button>
+				class="btn btn-pink waves-effect waves-light">Vote</button>
 			
 		</form>
 		
@@ -356,7 +356,7 @@
 				</div>
 			</div>
 			<button style="float: right;" type="submit"
-				class="btn btn-purple waves-effect waves-light">Fund!</button>
+				class="btn btn-pink waves-effect waves-light">Fund!</button>
 		</form>
 		
 		<% } %>

@@ -72,7 +72,7 @@
                     value="" size="20" maxlength="20" />
             </div>
         </div>
-        <button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
+        <button type="submit" class="btn btn-pink waves-effect waves-light">Submit</button>
 </form>
 
 <% if(request.getParameter("error") == "true") { %>
