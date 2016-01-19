@@ -67,10 +67,10 @@ public class InscriptionServlet extends HttpServlet {
         request.setAttribute("email", email);
         
         if(i == 1) {
-        	response.sendRedirect("index.jsp?justSignIn=true");
+        	response.getWriter().append("OK");
         }
         else {
-        	response.sendRedirect("signIn.jsp?error=true");
+        	response.getWriter().append("KO");
         }
 	}
 

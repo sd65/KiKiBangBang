@@ -6,6 +6,12 @@ Author: CoderThemes
 Email: coderthemes@gmail.com
 File: Common
 */
+
+table a {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
 body {
   background: #ebeff2;
   font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
