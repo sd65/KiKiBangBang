@@ -72,7 +72,6 @@
     <servlet-name>DashboardServlet</servlet-name>
     <url-pattern>/admin/dashboard</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>deleteIdea</servlet-name>
     <servlet-class>controllers.deleteIdea</servlet-class>
@@ -81,6 +80,12 @@
     <servlet-name>deleteIdea</servlet-name>
     <url-pattern>/admin/deleteIdea</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+    <servlet-name>ReloadServlet</servlet-name>
+    <servlet-class>controllers.ReloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReloadServlet</servlet-name>
+    <url-pattern>/user/reload</url-pattern>
+  </servlet-mapping>
 </web-app>

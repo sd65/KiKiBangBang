@@ -97,7 +97,7 @@ String baseUrl="http://localhost:8080/KikiBangBang";
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="sasha.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile of <%= nu.getEmail() %></a></li>
+                                        <li><a href="user/profile.jsp"><i class="ti-user m-r-5"></i> Profile of <%= nu.getEmail() %></a></li>
                                         <li><a href="<%= baseUrl %>"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
                                 </li>
